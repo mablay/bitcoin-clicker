@@ -22,7 +22,6 @@ export default {
     }
   },
   watch: {
-    // whenever question changes, this function will run
     wood: function (newWood, oldWood) {
       // const amount = newWood - oldWood
       this.history.unshift('Gathered wood +' + Date.now())
