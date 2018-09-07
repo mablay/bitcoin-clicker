@@ -2,30 +2,31 @@
   <div class="view production">
     <h1>Production View</h1>
     <Action v-bind:duration="200"
-            v-bind:done="() => state.wood += 5">Gather wood</Action>
-    <p>wood: {{state.wood}}</p>
+            v-bind:done="gatherWood">Gather wood</Action>
+    <Action v-bind:duration="500"
+            v-bind:done="gatherGold">Gather gold</Action>
   </div>
 </template>
 
 <script>
 import Action from './Action.vue'
+import { mapState, mapActions } from 'vuex'
+import { mapInventory } from '../store'
 export default {
   name: 'Production',
-  props: {
-    state: Object
-  },
-  data () {
-    return {
-      // state: {}
-    }
-  },
   components: {
     Action
   },
+  computed: {
+    ...mapState(['pickaxe']),
+    ...mapInventory()
+  },
   methods: {
-    aGatherWood () {
-      this.state.wood += 5
-    }
+    ...mapActions([
+      'gatherWood',
+      'gatherGold',
+      'inventPickaxe'
+    ])
   }
 }
 </script>

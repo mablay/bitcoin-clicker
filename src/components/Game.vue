@@ -1,36 +1,25 @@
 <template>
   <div class="game">
-    <History v-bind:history="history"></History>
-    <Production v-bind:state="state"></Production>
+    <History></History>
+    <Research></Research>
+    <Production></Production>
+    <Inventory></Inventory>
   </div>
 </template>
 
 <script>
 import Production from './Production.vue'
+import Research from './Research.vue'
 import History from './History.vue'
+import Inventory from './Inventory.vue'
 export default {
   name: 'Game',
-  data () {
-    return {
-      state: {wood: 5},
-      history: []
-    }
-  },
-  computed: {
-    wood () {
-      return this.state.wood
-    }
-  },
-  watch: {
-    wood: function (newWood, oldWood) {
-      // const amount = newWood - oldWood
-      this.history.unshift('Gathered wood +' + Date.now())
-      if (this.history.length > 9) this.history.pop()
-    }
-  },
+  // data () {},
   components: {
     Production,
-    History
+    History,
+    Inventory,
+    Research
   }
 }
 </script>
@@ -38,9 +27,9 @@ export default {
 <style>
 .game {
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 200px auto 200px 200px;
   grid-template-rows: auto;
-  grid-template-areas: "history production";
+  grid-template-areas: "history production research inventory";
 }
 
 .history {

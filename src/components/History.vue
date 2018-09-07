@@ -8,11 +8,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'History',
-  props: {
-    history: Array
-  }
+  computed: mapState(['history'])
 }
 </script>
 
