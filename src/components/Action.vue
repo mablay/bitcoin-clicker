@@ -19,7 +19,7 @@ export default {
       type: Boolean,
       default: true
     },
-    done: Function
+    action: Function
   },
   data () {
     return {
@@ -36,14 +36,7 @@ export default {
       if (!this.enabled) return
       if (this.millis >= this.duration) { this.millis = 0 }
       if (this.millis === 0) {
-        // console.log('[action] trigger duration type', typeof this.duration)
-        const timer = setInterval(() => {
-          this.millis += 20
-          if (this.millis >= this.duration) {
-            clearInterval(timer)
-            this.done()
-          }
-        }, 20)
+        this.action(this)
       }
     }
   }

@@ -3,7 +3,7 @@
     <h2>Research</h2>
     <Action v-bind:duration="2000"
             v-bind:enabled="!pickaxe"
-            v-bind:done="inventPickaxe">Invent Pickaxe</Action>
+            v-bind:action="inventPickaxe">Invent Pickaxe</Action>
     <p>Pickaxe: {{pickaxeStatus}}</p>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   },
   computed: mapState({
     pickaxe: (state) => state.tech.pickaxe,
-    pickaxeStatus: (state) => state.pickaxe ? 'invented' : 'needs research'
+    pickaxeStatus: (state) => state.tech.pickaxe ? 'invented' : 'needs research'
   }),
   methods: mapActions(['inventPickaxe'])
 }

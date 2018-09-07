@@ -2,9 +2,9 @@
   <div class="view production">
     <h1>Production View</h1>
     <Action v-bind:duration="200"
-            v-bind:done="gatherWood">Gather wood</Action>
+            v-bind:action="gatherWood">Gather wood</Action>
     <Action v-bind:duration="500"
-            v-bind:done="gatherGold">Gather gold</Action>
+            v-bind:action="gatherGold">Gather gold</Action>
   </div>
 </template>
 

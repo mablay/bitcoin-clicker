@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 
 const store = () => new Vuex.Store({
   state: {
+    speed: 1,
     inventory: {
       wood: 0,
       gold: 0
@@ -16,24 +17,42 @@ const store = () => new Vuex.Store({
     goldAdd: (state, amount) => (state.gold += amount),
     inventPickaxe: (state) => (state.tech.pickaxe = 1),
     log: (state, msg) => {
-      state.history.unshift(msg)
-      if (state.history.length > 8) state.history.pop()
+      state.history.splice(0, 0, {id: Date.now(), msg})
+      const n = state.history.length
+      if (n > 8) state.history.splice(n - 1, 1)
     }
   },
   actions: {
-    gatherWood ({commit, state}) {
+    gather ({commit, state}, task) {
+      return new Promise((resolve) => {
+        const timer = setInterval(() => {
+          task.millis += 20 * state.speed
+          if (task.millis >= task.duration) {
+            clearInterval(timer)
+            resolve()
+          }
+        }, 20)
+      })
+    },
+    gatherWood ({commit}, task) {
       const amount = 5
-      commit('addToInventory', {item: 'wood', amount})
-      commit('log', `Gathered ${amount} wood`)
+      this.dispatch('gather', task).then(() => {
+        commit('addToInventory', {item: 'wood', amount})
+        commit('log', `Gathered ${amount} wood`)
+      })
     },
-    gatherGold ({commit, state}) {
+    gatherGold ({commit, state}, task) {
       const amount = 1 + state.tech.pickaxe * 2 // might be different depending on app state
-      commit('addToInventory', {item: 'gold', amount})
-      commit('log', `Gathered ${amount} gold`)
+      this.dispatch('gather', task).then(() => {
+        commit('addToInventory', {item: 'gold', amount})
+        commit('log', `Gathered ${amount} gold`)
+      })
     },
-    inventPickaxe ({commit}) {
-      commit('inventPickaxe')
-      commit('log', `Invented Pickaxe`)
+    inventPickaxe ({commit}, task) {
+      this.dispatch('gather', task).then(() => {
+        commit('inventPickaxe')
+        commit('log', `Invented Pickaxe`)
+      })
     }
   }
 })

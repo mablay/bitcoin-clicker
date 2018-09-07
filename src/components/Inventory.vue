@@ -1,7 +1,7 @@
 <template>
   <div class="view inventory">
     <h2>Inventory</h2>
-    <p v-for="(item, index) in items" :key="index">{{item}}: {{inventory[item]}}</p>
+    <p v-for="(item, key) in inventory" :key="key">{{key}}: {{item}}</p>
   </div>
 </template>
 
