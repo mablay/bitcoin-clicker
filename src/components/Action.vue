@@ -45,6 +45,8 @@ export default {
 
 <style>
 .btn-action {
+  margin-bottom: 12px;
+  width: 80%;
   font-size: 20px;
   /* background-color: lightblue; */
   padding: 12px;

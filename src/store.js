@@ -7,7 +7,7 @@ const store = () => new Vuex.Store({
       wood: 0,
       gold: 0
     },
-    tech: {
+    technology: {
       pickaxe: 0
     },
     history: []
@@ -15,7 +15,7 @@ const store = () => new Vuex.Store({
   mutations: {
     addToInventory: (state, {item, amount}) => (state.inventory[item] += amount),
     goldAdd: (state, amount) => (state.gold += amount),
-    inventPickaxe: (state) => (state.tech.pickaxe = 1),
+    inventPickaxe: (state) => (state.technology.pickaxe = 1),
     log: (state, msg) => {
       state.history.splice(0, 0, {id: Date.now(), msg})
       const n = state.history.length
@@ -42,7 +42,7 @@ const store = () => new Vuex.Store({
       })
     },
     gatherGold ({commit, state}, task) {
-      const amount = 1 + state.tech.pickaxe * 2 // might be different depending on app state
+      const amount = 1 + state.technology.pickaxe * 2 // might be different depending on app state
       this.dispatch('gather', task).then(() => {
         commit('addToInventory', {item: 'gold', amount})
         commit('log', `Gathered ${amount} gold`)

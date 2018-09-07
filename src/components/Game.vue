@@ -4,6 +4,7 @@
     <Research></Research>
     <Production></Production>
     <Inventory></Inventory>
+    <Technology></Technology>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Production from './Production.vue'
 import Research from './Research.vue'
 import History from './History.vue'
 import Inventory from './Inventory.vue'
+import Technology from './Technology.vue'
 export default {
   name: 'Game',
   // data () {},
@@ -19,6 +21,7 @@ export default {
     Production,
     History,
     Inventory,
+    Technology,
     Research
   }
 }
@@ -27,15 +30,11 @@ export default {
 <style>
 .game {
   display: grid;
-  grid-template-columns: 200px auto 200px 200px;
+  grid-template-columns: 200px 200px 200px 200px auto;
   grid-template-rows: auto;
-  grid-template-areas: "history production research inventory";
+  grid-template-areas: "history production research inventory technology";
 }
 
-.history {
-  grid-area: history;
-  padding: 12px;
-}
 h1, h2 {
   font-weight: normal;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="view production">
-    <h1>Production View</h1>
+    <h2>Production</h2>
     <Action v-bind:duration="200"
             v-bind:action="gatherWood">Gather wood</Action>
     <Action v-bind:duration="500"
@@ -33,7 +33,7 @@ export default {
 
 <style>
 .production {
-  text-align: center;
+  /* text-align: center; */
   grid-area: production;
 }
 </style>

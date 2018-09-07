@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-.history {
-  grid-area: history;
+.inventory {
+  grid-area: inventory;
 }
 </style>

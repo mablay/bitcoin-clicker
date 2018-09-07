@@ -29,14 +29,15 @@ export default {
   display: inline-block;
   margin: 8px 0 8px 0;
 }
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.history-list-enter-active, .history-list-leave-active {
+
+.history-list-enter-active {
   transition: all 1s;
 }
-.history-list-enter, .history-list-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateY(-30px);
+.history-list-leave-active {
+  transition: all 0.5s;
+}
+.history-list-enter, .history-list-leave-to {
+  transform: translateY(-20px);
   opacity: 0;
 }
 
