@@ -1,6 +1,6 @@
 {
   "name": "text-adventure",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Text adventure for the web",
   "author": "Marc Ablay <marc.ablay@gmail.com>",
   "private": true,
