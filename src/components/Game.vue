@@ -1,6 +1,5 @@
 <template>
   <div class="game">
-    <Hashrate></Hashrate>
     <History></History>
     <Research></Research>
     <Production></Production>
@@ -23,7 +22,6 @@
 </template>
 
 <script>
-import Hashrate from './Hashrate.vue'
 import Production from './Production.vue'
 import Research from './Research.vue'
 import History from './History.vue'
@@ -35,7 +33,6 @@ export default {
   name: 'Game',
   // data () {},
   components: {
-    Hashrate,
     Production,
     History,
     Inventory,
@@ -58,11 +55,8 @@ export default {
 .game {
   display: grid;
   grid-template-columns: 200px 200px 200px 200px auto;
-  grid-template-rows: 20px auto;
-  grid-template-areas:
-    "hashrate hashrate hashrate hashrate hashrate"
-    "history production research inventory technology"
-  ;
+  grid-template-rows: auto;
+  grid-template-areas: "history production research inventory technology";
 }
 
 h1, h2 {

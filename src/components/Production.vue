@@ -1,10 +1,10 @@
 <template>
   <div class="view production">
-    <h2>Procurement</h2>
+    <h2>Mining</h2>
     <Action v-bind:duration="1000"
             v-bind:action="buyComputer">Buy Computer</Action>
     <Action v-bind:duration="500"
-            v-bind:action="buyComputer">Gather gold</Action>
+            v-bind:action="buyComputer">Rent Space</Action>
   </div>
 </template>
 

@@ -16,10 +16,6 @@ const store = () => new Vuex.Store({
         acc[tech] = 0
         return acc
       }, {})
-      // cpuMining: 0,
-      // gpuMining: 0,
-      // asicMining: 0,
-      // earlyTermination: 0
     },
     history: []
   },
@@ -41,7 +37,7 @@ const store = () => new Vuex.Store({
         const timer = setInterval(() => {
           task.millis += 20 * state.speed
           if (task.millis >= task.duration) {
-            task.millis = Number.POSITIVE_INFINITY
+            task.millis = 1e16 // larger than any duration but not inifinity
             clearInterval(timer)
             resolve()
           }
