@@ -1,16 +1,16 @@
 <template>
   <div class="view production">
-    <h2>Production</h2>
-    <Action v-bind:duration="200"
-            v-bind:action="gatherWood">Gather wood</Action>
+    <h2>Procurement</h2>
+    <Action v-bind:duration="1000"
+            v-bind:action="buyComputer">Buy Computer</Action>
     <Action v-bind:duration="500"
-            v-bind:action="gatherGold">Gather gold</Action>
+            v-bind:action="buyComputer">Gather gold</Action>
   </div>
 </template>
 
 <script>
 import Action from './Action.vue'
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import { mapInventory } from '../store'
 export default {
   name: 'Production',
@@ -18,14 +18,12 @@ export default {
     Action
   },
   computed: {
-    ...mapState(['pickaxe']),
+    // ...mapState(['pickaxe']),
     ...mapInventory()
   },
   methods: {
     ...mapActions([
-      'gatherWood',
-      'gatherGold',
-      'inventPickaxe'
+      'buyComputer'
     ])
   }
 }

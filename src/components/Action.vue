@@ -19,6 +19,10 @@ export default {
       type: Boolean,
       default: true
     },
+    context: {
+      type: String,
+      default: ''
+    },
     action: Function
   },
   data () {

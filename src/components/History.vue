@@ -27,6 +27,7 @@ export default {
 .history-record {
   transition: all 1s;
   display: inline-block;
+  width: 100%;
   margin: 8px 0 8px 0;
 }
 
