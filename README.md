@@ -1,5 +1,7 @@
 # text-adventure
 
+![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
+
 > Text adventure for the web
 
 ## Build Setup

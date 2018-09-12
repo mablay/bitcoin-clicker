@@ -25,6 +25,8 @@ const store = () => new Vuex.Store({
     lastHash: (state, hash) => (state.lastHash = hash),
     blockMined: (state, amount) => (state.inventory.btc += amount),
     research: (state, tech) => state.technology[tech]++,
+    buy: (state, {item, amount, price}) => state.inventory[item]++,
+    sell: (state, {item, amount, price}) => state.inventory[item]--,
     log: (state, msg) => {
       state.history.splice(0, 0, {id: Date.now(), msg})
       const n = state.history.length
