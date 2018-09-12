@@ -15,7 +15,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'History',
-  computed: mapState(['history'])
+  computed: mapState({
+    history: state => state.game.history
+  })
 }
 </script>
 

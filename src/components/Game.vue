@@ -5,19 +5,6 @@
     <Production></Production>
     <Inventory></Inventory>
     <Technology></Technology>
-    <modal v-if="showModal">
-      <h3 slot="header">Blockchain Adventure</h3>
-      <p slot="body">
-        It's 2013. You've incidentally read about Bitcoin
-        and felt: This is going to be BIG!<br>
-        And you want to be part of it.
-      </p>
-      <button slot="footer"
-              class="modal-default-button"
-              @click="showModal = false">
-        BEGIN
-      </button>
-    </modal>
   </div>
 </template>
 
@@ -27,26 +14,15 @@ import Research from './Research.vue'
 import History from './History.vue'
 import Inventory from './Inventory.vue'
 import Technology from './Technology.vue'
-import Modal from './Modal.vue'
 
 export default {
   name: 'Game',
-  // data () {},
   components: {
     Production,
     History,
     Inventory,
     Technology,
-    Research,
-    Modal
-  },
-  data () {
-    return {
-      showModal: false
-    }
-  },
-  created () {
-    // this.showModal = true
+    Research
   }
 }
 </script>

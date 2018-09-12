@@ -7,7 +7,7 @@
             v-bind:duration="tech[vm[key]].duration * 1000"
             v-bind:enabled="true"
             v-bind:context="key"
-            v-bind:action="research">{{key}}</Action>
+            v-bind:action="research">{{tech[vm[key]].title}}</Action>
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
       }, {})
     })
   },
-  methods: mapActions(['inventPickaxe', 'research'])
+  methods: mapActions(['research'])
 }
 </script>
 

@@ -6,11 +6,15 @@
 </template>
 
 <script>
-import { mapInventory } from '../store'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Inventory',
   computed: {
-    ...mapInventory(),
+    ...mapGetters([
+      'watt',
+      'space'
+    ]),
     inventory () {
       return this.$store.state.inventory
     }
