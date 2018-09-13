@@ -50,7 +50,7 @@ const inventory = {
           price: market[item].buyPrice,
           amount: 1
         }
-        console.log('[store] buy', task)
+        // console.log('[store] buy', task)
         commit('buy', order)
         commit('log', `bought ${order.amount} ${order.item}`)
       })

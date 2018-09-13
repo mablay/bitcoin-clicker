@@ -9,7 +9,15 @@ const market = {
     gpus: 0,
     space: 1,
     watt: 100,
-    kHps: 100 // kilo Hash per second
+    kHps: 100 // 100 kHps
+  },
+  gpu: {
+    title: 'GPU',
+    buyPrice: 600,
+    buyDuration: 0.1,
+    space: 0,
+    watt: 130,
+    kHps: 20000 // 20 MHps
   },
   rig: {
     title: 'Mining RIG',
@@ -27,7 +35,7 @@ const market = {
     buyDuration: 20,
     space: 1,
     watt: 1500,
-    kHps: 10000 // kilo Hash per second
+    kHps: 5000000 // 5 GHps
   }
 }
 

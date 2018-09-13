@@ -1,8 +1,20 @@
+import market from '../js/market'
+
 const game = {
   state: {
     speed: 10,
     difficulty: 1,
     history: []
+  },
+  getters: {
+    hashrate: (state, getters, rootState) => {
+      const miners = Object.keys(market).filter(item => 'kHps' in market[item])
+      const hashrate = miners.reduce((kHps, miner) => {
+        return kHps + market[miner].kHps * rootState.inventory[miner]
+      }, 0)
+      console.log('hashrate [kHps]', hashrate)
+      return hashrate
+    }
   },
   mutations: {
     log: (state, msg) => {

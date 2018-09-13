@@ -14,7 +14,6 @@
 <script>
 import Action from './Action.vue'
 import { mapActions, mapState } from 'vuex'
-// import { mapInventory } from '../store'
 import market from '../js/market'
 
 export default {

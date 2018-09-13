@@ -1,5 +1,8 @@
 <template>
   <div class="game">
+    <div class="hashrate">
+      Hashrate: {{hashrate}}kH/s
+    </div>
     <History></History>
     <Research></Research>
     <Production></Production>
@@ -9,11 +12,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Production from './Production.vue'
 import Research from './Research.vue'
 import History from './History.vue'
 import Inventory from './Inventory.vue'
 import Technology from './Technology.vue'
+import poisson from '../js/poisson'
 
 export default {
   name: 'Game',
@@ -23,6 +28,25 @@ export default {
     Inventory,
     Technology,
     Research
+  },
+  computed: mapState({
+    hashrate: (state, getters) => getters.hashrate
+  }),
+  data () {
+    return {
+      clock: poisson(1000, this.tick).start()
+    }
+  },
+  mounted () {
+    console.log('--- MOUNTED---')
+  },
+  beforeDestroy () {
+    console.log('--- BEFORE_DESTROY ---')
+  },
+  methods: {
+    tick (delay) {
+      console.log('tack', delay)
+    }
   }
 }
 </script>
