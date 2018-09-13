@@ -8,11 +8,11 @@ const technology = {
     }, {})
   },
   mutations: {
-    addToTechnology: (state, {item, amount}) => (state[item] += amount),
+    addToTechnology: (state, { item, amount }) => (state[item] += amount),
     research: (state, tech) => state[tech]++
   },
   actions: {
-    research ({commit, state}, task) {
+    research ({ commit, state }, task) {
       const tech = task.context
       const level = state[tech] + 1
       console.log('[store] research %s level %d', tech, level)

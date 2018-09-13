@@ -1,11 +1,11 @@
 <template>
   <div class="view history">
     <h2>History</h2>
-    <transition-group name="history-list" tag="p">
+    <transition-group class="content" name="history-list" tag="p">
       <p v-for="(activity, index) in history"
          :key="activity.id"
          class="history-record"
-         v-bind:style="{color: `hsl(120, 0%, ${100 - index * 10}%)`}">{{activity.msg}}</p>
+         v-bind:style="{color: `hsl(120, 0%, ${index * 10}%)`}">{{activity.msg}}</p>
     </transition-group>
   </div>
 </template>
@@ -21,9 +21,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .history {
   grid-area: history;
+  .content {
+    text-align: left;
+  }
 }
 
 .history-record {

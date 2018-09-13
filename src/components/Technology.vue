@@ -9,12 +9,13 @@
 <script>
 import { mapState } from 'vuex'
 import techtree from '../js/techtree'
+import { nonZeroProperties } from '../js/util'
 
 export default {
   name: 'Technology',
   data: () => techtree,
   computed: mapState({
-    technology: (state) => state.technology
+    technology: (state) => nonZeroProperties(state.technology)
   })
 }
 </script>

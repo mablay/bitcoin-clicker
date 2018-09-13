@@ -15,7 +15,7 @@ const techtree = {
     { title: 'Pro computer skills', duration: 500 }
   ],
   cpuMiner: [
-    { title: 'Tweak miner configuration', duration: 5, require: { computer: 2 } },
+    { title: 'Tweak miner configuration', duration: 5, require: { computer: 1 } },
     { title: 'Overclock CPU', duration: 10, require: { computer: 2 } },
     { title: 'Improve CPU mining software', duration: 30, require: { computer: 3 } },
     { title: 'Improve CPU mining software', duration: 50, require: { computer: 3 } }

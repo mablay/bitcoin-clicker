@@ -1,14 +1,17 @@
+import Vue from 'vue'
 import Vuex from 'vuex'
 import game from './game'
+import mining from './mining'
 import inventory from './inventory'
 import technology from './technology'
 
-const store = () => new Vuex.Store({
+Vue.use(Vuex)
+
+export default new Vuex.Store({
   modules: {
     game,
+    mining,
     inventory,
     technology
   }
 })
-
-export default store

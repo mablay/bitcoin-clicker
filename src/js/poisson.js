@@ -2,7 +2,7 @@ class Poisson {
   constructor (meanInterval, cb) {
     this._interval = meanInterval
     this.cb = cb
-    window.handler = null
+    this.handler = null
     this.curInterval = 0
     this.name = Date.now()
   }
@@ -13,28 +13,28 @@ class Poisson {
   }
 
   start () {
-    // andt
-    if (window.handler) return
-    window.handler = setTimeout(() => this.iterate(), this.sample())
+    if (this.handler) return
+    console.log('[poisson] START')
+    this.handler = setTimeout(() => this.iterate(), this.sample())
     return this
   }
 
   iterate () {
-    console.log('[poisson]', this.name)
     this.cb(this.curInterval)
-    window.handler = setTimeout(() => this.iterate(), this.sample())
+    this.handler = setTimeout(() => this.iterate(), this.sample())
   }
 
   stop () {
-    if (window.handler) {
-      clearTimeout(window.handler)
-      window.handler = null
+    if (this.handler) {
+      console.log('[poisson] STOP')
+      clearTimeout(this.handler)
+      this.handler = null
     }
     return this
   }
 
   set interval (newInterval) {
-    if (window.handler) {
+    if (this.handler) {
       this.stop()
       this._interval = newInterval
       this.start()
