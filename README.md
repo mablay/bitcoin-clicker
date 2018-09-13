@@ -1,4 +1,8 @@
-# tess-adventure
+# text-adventure
+
+![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
+
+Bitcoin clicker game
 
 ## Project setup
 ```
