@@ -36,8 +36,8 @@ export default {
     progress: function () {
       return 100 * this.millis / this.duration
     },
-    buttonColor: ({$store}) => $store.state.game.theme === 'light' ? 'WHITE' : '#222',
-    progressColor: ({$store}) => $store.state.game.theme === 'light' ? 'SILVER' : '#888'
+    buttonColor: ({ $store }) => $store.state.game.theme === 'light' ? 'WHITE' : '#222',
+    progressColor: ({ $store }) => $store.state.game.theme === 'light' ? 'SILVER' : '#888'
   },
   methods: {
     trigger () {
