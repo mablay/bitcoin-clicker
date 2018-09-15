@@ -18,7 +18,7 @@ export default {
   }),
   methods: {
     getTheme () {
-      return this.theme
+      return 'theme-'.concat(this.theme)
     }
   }
 }
@@ -47,18 +47,4 @@ html,body,.theme,#app {
   }
 }
 
-.btn {
-  @include themify($themes) {
-    // border: themed('buttonBorder');
-    color: themed('buttonTextColor');
-    border-color: themed('buttonTextColor');
-    background-color: themed('buttonColor');
-
-    &:hover {
-      color: themed('buttonTextHoverColor');
-      border-color: themed('buttonTextHoverColor');
-      background-color: themed('buttonHoverColor');
-    }
-  }
-}
 </style>

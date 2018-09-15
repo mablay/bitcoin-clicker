@@ -1,7 +1,9 @@
 <template>
   <button class="btn btn-action"
           v-on:click="trigger()"
-          v-bind:style="{ background: `linear-gradient(to left, white ${this.progress}% , SILVER ${this.progress}% )` }"
+          v-bind:style="{
+            background: `linear-gradient(to left, ${buttonColor} ${this.progress}% , ${progressColor} ${this.progress}% )`
+          }"
           v-bind:class="{ disabled: !enabled }">
     <slot></slot>
   </button>
@@ -33,7 +35,9 @@ export default {
   computed: {
     progress: function () {
       return 100 * this.millis / this.duration
-    }
+    },
+    buttonColor: ({$store}) => $store.state.game.theme === 'light' ? 'WHITE' : '#222',
+    progressColor: ({$store}) => $store.state.game.theme === 'light' ? 'SILVER' : '#888'
   },
   methods: {
     trigger () {
@@ -63,8 +67,16 @@ export default {
   border: 2px solid grey;
   @include themify($themes) {
     // color: #202020;
-    color: themed('textColor');
-    background-color: themed('backgroundColor');
+    color: themed('buttonTextColor');
+    background-color: themed('buttonColor');
+    // border: themed('buttonBorder');
+    border-color: themed('buttonBorderColor');
+
+    &:hover:not(.disabled) {
+      color: themed('buttonTextHoverColor');
+      border-color: themed('buttonBorderHoverColor');
+      background-color: themed('buttonHoverColor');
+    }
   }
 
   /* background: linear-gradient(to right, white 50%, grey 50%) */
@@ -76,6 +88,9 @@ export default {
   }
 }
 .btn-action.disabled {
-  color: lightgrey;
+  @include themify($themes) {
+    color: themed('buttonTextColorDisabled');
+    border-color: themed('buttonBorderColorDisabled');
+  }
 }
 </style>

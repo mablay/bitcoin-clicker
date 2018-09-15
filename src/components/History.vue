@@ -5,7 +5,7 @@
       <p v-for="(activity, index) in history"
          :key="activity.id"
          class="history-record"
-         v-bind:style="{color: `hsl(120, 0%, ${index * 10}%)`}">{{activity.msg}}</p>
+         v-bind:style="{color: `hsl(120, 0%, ${foreground + (background - foreground) * index / 10}%)`}">{{activity.msg}}</p>
     </transition-group>
   </div>
 </template>
@@ -16,7 +16,12 @@ import { mapState } from 'vuex'
 export default {
   name: 'History',
   computed: mapState({
-    history: state => state.game.history
+    history: state => state.game.history,
+    foreground: state => state.game.theme === 'light' ? 0 : 100,
+    background: state => {
+      console.log('background', state.game.theme)
+      return state.game.theme === 'light' ? 100 : 0
+    }
   })
 }
 </script>

@@ -1,6 +1,6 @@
 const game = {
   state: {
-    speed: 1,
+    speed: 10,
     history: [],
     theme: 'light'
   },
@@ -12,8 +12,11 @@ const game = {
     },
     setTheme: (state, theme) => {
       console.log('Set theme:', theme)
-      state.theme = 'theme-'.concat(theme)
+      state.theme = theme
     }
+  },
+  getters: {
+    theme: (state) => state.theme || 'light'
   },
   actions: {
     work ({ commit, state }, task) {
