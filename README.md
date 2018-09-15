@@ -18,6 +18,8 @@ npm run serve
 ```
 npm run build
 ```
+For now, base path has to be fixed manually to resolve
+files on github pages.
 
 ### Lints and fixes files
 ```
