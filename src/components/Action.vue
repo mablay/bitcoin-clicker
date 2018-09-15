@@ -1,5 +1,5 @@
 <template>
-  <button class="btn-action"
+  <button class="btn btn-action"
           v-on:click="trigger()"
           v-bind:style="{ background: `linear-gradient(to left, white ${this.progress}% , SILVER ${this.progress}% )` }"
           v-bind:class="{ disabled: !enabled }">
@@ -47,8 +47,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../styles/themes.scss';
 .btn-action {
+  cursor: pointer;
   margin-bottom: 12px;
   width: 80%;
   font-size: 20px;
@@ -57,14 +59,21 @@ export default {
   outline: 0;
   border-radius: 9px;
   border: none;
-  color: #202020;
   font-weight: 400;
   border: 2px solid grey;
+  @include themify($themes) {
+    // color: #202020;
+    color: themed('textColor');
+    background-color: themed('backgroundColor');
+  }
+
   /* background: linear-gradient(to right, white 50%, grey 50%) */
 }
 .btn-action:focus {
-  border: solid 2px grey;
-  box-shadow: 0px 0px 16px skyblue;
+  @include themify($themes) {
+    border: themed('buttonBorderFocus');
+    box-shadow: 0px 0px 16px skyblue;
+  }
 }
 .btn-action.disabled {
   color: lightgrey;

@@ -1,13 +1,18 @@
 const game = {
   state: {
-    speed: 10,
-    history: []
+    speed: 1,
+    history: [],
+    theme: 'light'
   },
   mutations: {
     log: (state, msg) => {
       state.history.splice(0, 0, { id: Date.now(), msg })
       const n = state.history.length
       if (n > 8) state.history.splice(n - 1, 1)
+    },
+    setTheme: (state, theme) => {
+      console.log('Set theme:', theme)
+      state.theme = 'theme-'.concat(theme)
     }
   },
   actions: {

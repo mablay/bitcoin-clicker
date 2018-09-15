@@ -47,6 +47,7 @@ export default {
 
 <style lang="scss">
 .mining {
+  font-size: 18px;
   grid-area: mining;
   padding: 4px;
   text-align: left;
