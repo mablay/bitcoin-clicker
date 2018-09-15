@@ -1,5 +1,5 @@
 module.exports = {
   pwa: {
-    name: 'text-adventure'
+    name: 'bitcoin-clicker'
   }
 }

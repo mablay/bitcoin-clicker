@@ -1,4 +1,4 @@
-# text-adventure
+# bitcoin-clicker
 
 ![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
 
