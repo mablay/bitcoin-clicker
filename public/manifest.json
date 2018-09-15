@@ -14,7 +14,7 @@
     }
   ],
   "start_url": "/bitcoin-clicker/index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "display": "fullscreen",
+  "background_color": "#202020",
+  "theme_color": "#ff9900"
 }
