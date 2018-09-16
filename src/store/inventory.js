@@ -22,7 +22,7 @@ const inventory = {
       return watt
     },
     // Inventory space consumption
-    space: (state) => {
+    usedSpace: (state) => {
       let space = 0
       for (let [item, amount] of Object.entries(state)) {
         const sp = market[item] ? market[item].space || 0 : 0
@@ -50,9 +50,10 @@ const inventory = {
       }, {})
     },
     // items the player has enough FIAT money to buy
-    isAffordable: (state) => {
+    isAffordable: (state, {usedSpace}) => {
       return Object.keys(market).reduce((acc, item) => {
-        acc[item] = (market[item].buyPrice <= state.usd)
+        acc[item] = (market[item].buyPrice <= state.usd) &&
+          (state.space >= usedSpace + (market[item].space || 0))
         return acc
       }, {})
     }

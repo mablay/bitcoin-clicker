@@ -5,6 +5,9 @@
       <p v-for="(item, key) in inventory" :key="key">
         <span class="item-amount">{{item}}</span> <span class="item-title">{{key}}</span>
       </p>
+      <p>
+        <span class="item-amount">{{usedSpace}} / {{$store.state.inventory.space}}</span> <span class="item-title">space</span>
+      </p>
     </div>
   </div>
 </template>
@@ -16,16 +19,13 @@ import { skipProperties, nonZeroProperties } from '../js/util'
 export default {
   name: 'Inventory',
   computed: {
-    ...mapGetters([
-      'watt',
-      'space'
-    ]),
     inventory () {
       return skipProperties(
         nonZeroProperties(this.$store.state.inventory),
-        ['usd', 'btc']
+        ['usd', 'btc', 'space']
       )
-    }
+    },
+    ...mapGetters(['watt', 'usedSpace'])
   }
 }
 </script>
