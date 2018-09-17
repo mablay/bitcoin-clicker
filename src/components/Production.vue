@@ -1,6 +1,6 @@
 <template>
   <div class="view production">
-    <h2>Market</h2>
+    <h2><router-link to="/about">Market</router-link></h2>
     <Action
       v-for="(item, key) in market"
       v-if="isAvailable[key]"
