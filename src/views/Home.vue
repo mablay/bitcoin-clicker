@@ -39,7 +39,6 @@ export default {
     const dispatchBlock = (arg) => this.$store.dispatch('block', arg)
     const { speed } = this.$store.state.game
     const blockTime = 1000 / speed // in millis
-    console.log('[game]', { speed, blockTime })
     this.clock = poisson(blockTime, dispatchBlock).start()
   },
   beforeDestroy () {

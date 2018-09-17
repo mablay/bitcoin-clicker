@@ -11,7 +11,7 @@ const game = {
       if (n > 8) state.history.splice(n - 1, 1)
     },
     setTheme: (state, theme) => {
-      console.log('Set theme:', theme)
+      // console.log('Set theme:', theme)
       state.theme = theme
     }
   },

@@ -12,9 +12,12 @@
 import { mapState } from 'vuex'
 export default {
   name: 'App',
+  mounted () {
+    console.log('App started')
+  },
   computed: mapState({
     theme: (state) => {
-      console.log(state.game)
+      // console.log(state.game)
       return state.game.theme
     }
   }),

@@ -14,7 +14,7 @@ class Poisson {
 
   start () {
     if (this.handler) return
-    console.log('[poisson] START')
+    console.log(`[poisson] START (${this._interval}ms)`)
     this.handler = setTimeout(() => this.iterate(), this.sample())
     return this
   }
