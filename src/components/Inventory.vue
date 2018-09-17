@@ -2,11 +2,13 @@
   <div class="view inventory">
     <h2>Inventory</h2>
     <div class="content">
-      <p v-for="(item, key) in inventory" :key="key">
-        <span class="item-amount">{{item}}</span> <span class="item-title">{{key}}</span>
+      <p
+        v-for="(item, key) in inventory"
+        :key="key">
+        <span class="item-amount">{{ item }}</span> <span class="item-title">{{ key }}</span>
       </p>
       <p>
-        <span class="item-amount">{{usedSpace}} / {{$store.state.inventory.space}}</span> <span class="item-title">space</span>
+        <span class="item-amount">{{ usedSpace }} / {{ $store.state.inventory.space }}</span> <span class="item-title">space</span>
       </p>
     </div>
   </div>

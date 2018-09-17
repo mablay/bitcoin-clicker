@@ -1,25 +1,25 @@
 <template>
   <div class="view mining">
     <div class="stats">
-      <div>Date {{blocktime}}</div>
-      <div>Chain height {{chainheight}}</div>
+      <div>Date {{ blocktime }}</div>
+      <div>Chain height {{ chainheight }}</div>
     </div>
     <div class="stats">
-      <div>Hashrate {{hashrateText}}H/s</div>
-      <div>Network {{networkHashrate}}H/s</div>
+      <div>Hashrate {{ hashrateText }}H/s</div>
+      <div>Network {{ networkHashrate }}H/s</div>
     </div>
     <div class="stats">
-      <div>BTC {{btc}}</div>
-      <div>USD {{usd}}</div>
+      <div>BTC {{ btc }}</div>
+      <div>USD {{ usd }}</div>
     </div>
     <div class="stats">
-      <div>BTC Price {{btcPrice}}</div>
-      <div>kWh Price {{kwhPrice}}</div>
-      <div></div>
+      <div>BTC Price {{ btcPrice }}</div>
+      <div>kWh Price {{ kwhPrice }}</div>
+      <div/>
     </div>
     <div class="stats">
-      <div>Power {{(powerConsumption / 1000).toFixed(2)}}kW</div>
-      <div>Cost ${{utilityBill.toFixed(2)}} USD</div>
+      <div>Power {{ (powerConsumption / 1000).toFixed(2) }}kW</div>
+      <div>Cost ${{ utilityBill.toFixed(2) }} USD</div>
     </div>
   </div>
 </template>

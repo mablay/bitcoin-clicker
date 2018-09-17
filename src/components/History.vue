@@ -1,11 +1,15 @@
 <template>
   <div class="view history">
     <h2>History</h2>
-    <transition-group class="content" name="history-list" tag="p">
-      <p v-for="(activity, index) in history"
-         :key="activity.id"
-         class="history-record"
-         v-bind:style="{color: `hsl(120, 0%, ${foreground + (background - foreground) * index / 10}%)`}">{{activity.msg}}</p>
+    <transition-group
+      class="content"
+      name="history-list"
+      tag="p">
+      <p
+        v-for="(activity, index) in history"
+        :key="activity.id"
+        :style="{color: `hsl(120, 0%, ${foreground + (background - foreground) * index / 10}%)`}"
+        class="history-record">{{ activity.msg }}</p>
     </transition-group>
   </div>
 </template>

@@ -1,8 +1,9 @@
 <template>
   <div class="view technology">
     <h2>Technology</h2>
-    <p v-for="(level, tech) in technology"
-       :key="tech">{{tech}}: {{level}}</p>
+    <p
+      v-for="(level, tech) in technology"
+      :key="tech">{{ tech }}: {{ level }}</p>
   </div>
 </template>
 

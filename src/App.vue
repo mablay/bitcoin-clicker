@@ -1,5 +1,7 @@
 <template>
-  <div class="theme" v-bind:class="getTheme()">
+  <div
+    :class="getTheme()"
+    class="theme">
     <div id="app">
       <router-view/>
     </div>

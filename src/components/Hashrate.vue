@@ -1,10 +1,10 @@
 <template>
   <div class="view hashrate">
     <div class="digits difficulty">
-      {{difficulty}}
+      {{ difficulty }}
     </div>
     <div class="digits last-hash">
-      {{lastHash}}
+      {{ lastHash }}
     </div>
   </div>
 </template>

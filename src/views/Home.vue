@@ -1,12 +1,12 @@
 <template>
   <div class="game">
-    <Nav></Nav>
-    <Mining></Mining>
-    <History></History>
-    <Research></Research>
-    <Production></Production>
-    <Inventory></Inventory>
-    <Technology></Technology>
+    <Nav/>
+    <Mining/>
+    <History/>
+    <Research/>
+    <Production/>
+    <Inventory/>
+    <Technology/>
   </div>
 </template>
 

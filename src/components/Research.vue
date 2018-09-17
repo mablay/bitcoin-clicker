@@ -1,13 +1,14 @@
 <template>
   <div class="view research">
     <h2>Research</h2>
-    <Action v-for="(tech, key) in techtree"
-            :key="key"
-            v-if="show[key]"
-            v-bind:duration="tech[vm[key]].duration * 1000"
-            v-bind:enabled="true"
-            v-bind:context="key"
-            v-bind:action="research">{{tech[vm[key]].title}}</Action>
+    <Action
+      v-for="(tech, key) in techtree"
+      v-if="show[key]"
+      :key="key"
+      :duration="tech[vm[key]].duration * 1000"
+      :enabled="true"
+      :context="key"
+      :action="research">{{ tech[vm[key]].title }}</Action>
   </div>
 </template>
 
@@ -17,14 +18,14 @@ import { mapActions, mapState } from 'vuex'
 import techtree from '../js/techtree'
 export default {
   name: 'Research',
+  components: {
+    Action
+  },
   data () {
     return {
       techtree,
       vm: this
     }
-  },
-  components: {
-    Action
   },
   computed: {
     ...mapState(Object.keys(techtree).reduce((acc, tech) => {

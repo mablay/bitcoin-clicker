@@ -2,8 +2,12 @@
   <div id="nav">
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
-    <span class="spanlink" @click="setTheme('light')">Light</span>
-    <span class="spanlink" @click="setTheme('dark')">Dark</span>
+    <span
+      class="spanlink"
+      @click="setTheme('light')">Light</span>
+    <span
+      class="spanlink"
+      @click="setTheme('dark')">Dark</span>
   </div>
 </template>
 

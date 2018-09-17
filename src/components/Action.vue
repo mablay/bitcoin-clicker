@@ -1,11 +1,12 @@
 <template>
-  <button class="btn btn-action"
-          v-on:click="trigger()"
-          v-bind:style="{
-            background: `linear-gradient(to left, ${buttonColor} ${this.progress}% , ${progressColor} ${this.progress}% )`
-          }"
-          v-bind:class="{ disabled: !enabled }">
-    <slot></slot>
+  <button
+    :style="{
+      background: `linear-gradient(to left, ${buttonColor} ${progress}% , ${progressColor} ${progress}% )`
+    }"
+    :class="{ disabled: !enabled }"
+    class="btn btn-action"
+    @click="trigger()">
+    <slot/>
   </button>
 </template>
 
