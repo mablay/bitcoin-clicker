@@ -26,7 +26,10 @@ export default {
       type: String,
       default: ''
     },
-    action: Function
+    action: {
+      type: Function,
+      default: () => {}
+    }
   },
   data () {
     return {
