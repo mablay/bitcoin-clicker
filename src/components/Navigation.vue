@@ -4,10 +4,11 @@
     <router-link to="/about">About</router-link> -->
     <span
       class="spanlink"
-      @click="setTheme('light')">Light</span>
+      @click="setTheme('light')">&#9728;</span>
+
     <span
       class="spanlink"
-      @click="setTheme('dark')">Dark</span>
+      @click="setTheme('dark')">&#9790;</span>
   </div>
 </template>
 
@@ -26,9 +27,10 @@ export default {
   padding: 4px;
   text-align: right;
   .spanlink {
+    font-size: 32px;
     padding: 6px;
     cursor: pointer;
-    text-decoration: underline;
+    // text-decoration: underline;
   }
 
   a {

@@ -51,7 +51,7 @@ export default {
 .game {
   display: grid;
   grid-template-columns: 200px 200px 200px 200px 200px auto;
-  grid-template-rows: 40px auto;
+  grid-template-rows: 60px auto;
   grid-template-areas:
     "mining mining mining mining mining nav"
     "production inventory research technology history history"
