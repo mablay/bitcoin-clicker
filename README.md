@@ -30,3 +30,8 @@ npm run lint
 ```
 npm run test:unit
 ```
+
+### Deploy to GitHub pages
+```
+npm run deploy
+```

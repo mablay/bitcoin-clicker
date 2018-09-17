@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "BASE_URL=/bitcoin-clicker/ vue-cli-service build",
+    "deploy": "./deploy.sh",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
