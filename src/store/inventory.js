@@ -50,7 +50,7 @@ const inventory = {
       }, {})
     },
     // items the player has enough FIAT money to buy
-    isAffordable: (state, {usedSpace}) => {
+    isAffordable: (state, { usedSpace }) => {
       return Object.keys(market).reduce((acc, item) => {
         acc[item] = (market[item].buyPrice <= state.usd) &&
           (state.space >= usedSpace + (market[item].space || 0))
