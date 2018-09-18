@@ -1,5 +1,6 @@
 import market from '../js/market'
 import { blocktime, networkHashrate, metricUnit } from '../js/blockchain'
+import btcPrice from '../js/btc-price'
 
 let lastHour = 0
 const mining = {
@@ -28,6 +29,7 @@ const mining = {
       state.chainheight++
       const nhr = networkHashrate(state.chainheight)
       // console.log('network hashrate', metricUnit(nhr, 'T').toString())
+      // TODO networkHashrate = userHashrate + othersHashrate
       state.networkHashrate = metricUnit(nhr, 'T').toString()
     },
     eMeter: (state, kJoules) => {
@@ -43,12 +45,18 @@ const mining = {
       // console.log('[game] nhr %s hashrate', nhr, getters.hashrate)
       commit('addToInventory', { item: 'btc', amount: btc })
 
-      const hour = blocktime(state.chainheight).getHours()
-      if (hour !== lastHour) {
+      // implicit second timer (triggers per hour)
+      const chainTime = blocktime(state.chainheight)
+      if (chainTime.getHours() !== lastHour) {
+        // electricity
         // accumulate electricity costs
         commit('eMeter', getters.watt / 1000)
-        lastHour = hour
+
+        // exchange rates
+        commit('updateBtcPrice', btcPrice(chainTime.getTime() / 1000))
+        lastHour = chainTime.getHours()
       }
+
     }
   }
 }

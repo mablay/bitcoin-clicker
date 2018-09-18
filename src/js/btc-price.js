@@ -35,7 +35,7 @@ const prices = [
   8397.63
 ]
 
-const step = end - start / (prices.length - 1)
+const step = (end - start) / (prices.length - 1)
 function interpolate (time) {
   const offset = time - start
   const index = Math.floor(offset / step)

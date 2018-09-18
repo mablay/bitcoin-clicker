@@ -9,10 +9,10 @@ const game = {
      * speed: 1 => game and reality progress evenly.
      *          => blocktime 600 seconds
      * speed: 100k => 1 game-year elapses in ~5 minutes.
-     *             => blocktime 6ms
+     *             => blocktime ~ 6ms
+     *             => 1 second ~ 1 game-day
      *
-     * TODO: game.speed requires a meaningful unit.
-     *       At the moment the unit of speed is meaningless.
+     * TODO: change game speed to 100k and aggregate mining rewards per day.
      */
     speed: 10,
     history: [],

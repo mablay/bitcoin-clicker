@@ -13,7 +13,7 @@
       <div>USD {{ usd }}</div>
     </div>
     <div class="stats">
-      <div>BTC Price {{ btcPrice }}</div>
+      <div>BTC Price {{ btcPrice.toFixed(2) }}</div>
       <div>kWh Price {{ kwhPrice }}</div>
       <div/>
     </div>
@@ -37,7 +37,7 @@ export default {
     blocktime: (state) => blocktime(state.mining.chainheight).toLocaleDateString(),
     btc: (state) => state.inventory.btc.toFixed(4),
     usd: (state) => state.inventory.usd.toFixed(2),
-    btcPrice: (state) => 500,
+    btcPrice: (state) => state.exchange.btcInUSD,
     kwhPrice: (state) => 0.19,
     powerConsumption: (state, getters) => getters.watt,
     utilityBill: (state) => state.mining.utilityBill

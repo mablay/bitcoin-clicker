@@ -83,7 +83,7 @@ const inventory = {
         commit('log', `bought ${order.amount} ${order.item}`)
       })
     },
-    sell ({ commit, state }, task) {
+    sell ({ commit, state, rootState }, task) {
       // console.log('sell', task)
       const item = task.context
       this.dispatch('work', task).then(() => {
@@ -91,6 +91,9 @@ const inventory = {
           item: task.context,
           price: market[item].sellPrice,
           amount: state.btc
+        }
+        if (order.item === 'btc') {
+          order.price = rootState.exchange.btcInUSD
         }
         // console.log('[store] buy', task)
         commit('sell', order)
