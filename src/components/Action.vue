@@ -14,6 +14,8 @@
 export default {
   name: 'Action',
   props: {
+    // TODO: duration should be expressed in game-days
+    //       instead of real world milliseconds
     duration: {
       type: Number,
       default: 1000
