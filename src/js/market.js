@@ -14,8 +14,8 @@ const market = {
     buyDuration: 1,
     gpus: 0,
     space: 1,
-    watt: 150,
-    kHps: 1000 // 1 MHps - 20 MHps @150W
+    watt: 100,
+    kHps: 1000 // 1 MHps (80W) - 20 MHps (150W)
   },
   gpu: {
     title: 'GPU',
