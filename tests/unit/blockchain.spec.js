@@ -21,5 +21,4 @@ describe('blockchain.js', () => {
     }
     expect(btcPrice(1288007258)).toBeGreaterThan(0)
   })
-
 })

@@ -12,15 +12,15 @@
 import { mapState } from 'vuex'
 export default {
   name: 'App',
-  mounted () {
-    console.log('App started')
-  },
   computed: mapState({
     theme: (state) => {
       // console.log(state.game)
       return state.game.theme
     }
   }),
+  mounted () {
+    console.log('App started')
+  },
   methods: {
     getTheme () {
       return 'theme-'.concat(this.theme)

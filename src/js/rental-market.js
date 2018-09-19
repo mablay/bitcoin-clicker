@@ -16,7 +16,7 @@ const rentalMarket = {
     title: 'datacenter',
     rent: 20000,
     space: 300
-  },
+  }
 }
 
-export default market
+export default rentalMarket

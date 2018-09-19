@@ -56,7 +56,6 @@ const mining = {
         commit('updateBtcPrice', btcPrice(chainTime.getTime() / 1000))
         lastHour = chainTime.getHours()
       }
-
     }
   }
 }
