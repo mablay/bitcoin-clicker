@@ -11,20 +11,20 @@ const market = {
   computer: {
     title: 'PC',
     buyPrice: 200,
-    buyDuration: 0.1,
+    buyDuration: 1,
     gpus: 0,
     space: 1,
-    watt: 100,
-    kHps: 10000 // 10 MHps - 100 MHps
+    watt: 150,
+    kHps: 1000 // 1 MHps - 20 MHps @150W
   },
   gpu: {
     title: 'GPU',
     tech: { gpuMiner: 1 },
     buyPrice: 600,
-    buyDuration: 0.1,
+    buyDuration: 1,
     space: 0,
     watt: 130,
-    kHps: 100000 // 100 MHps - 1 GHps
+    kHps: 100000 // 100 MHps - 2 GHps @250W
   },
   rig: {
     title: 'Mining RIG',
@@ -42,7 +42,16 @@ const market = {
     buyDuration: 1,
     space: 1,
     watt: 800,
-    kHps: 10000000 // 10 GHps - 100 GHps
+    kHps: 100000 // 100 MHps - 200 MHps @15W
+  },
+  usbAsic: {
+    title: 'USB Miner',
+    tech: { usbMiner: 1 },
+    buyPrice: 35,
+    buyDuration: 1,
+    space: 0,
+    watt: 2.5,
+    kHps: 100000 // 100 MHps - 3 GHps @2.5W
   },
   asic: {
     title: 'Bitcoin ASIC',
@@ -51,7 +60,7 @@ const market = {
     buyDuration: 20,
     space: 1,
     watt: 1500,
-    kHps: 1000000000 // 1 THps - 10 THps
+    kHps: 1000000000 // 1 THps - 10 THps @1500W
   }
 }
 
