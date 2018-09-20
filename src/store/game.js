@@ -14,7 +14,7 @@ const game = {
      *
      * TODO: change game speed to 100k and aggregate mining rewards per day.
      */
-    speed: 10,
+    speed: 86400, // = 60 * 60 * 24 => 1s ~ 1d game time
     history: [],
     theme: 'dark'
   },
