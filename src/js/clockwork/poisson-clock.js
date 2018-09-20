@@ -1,4 +1,4 @@
-class Poisson {
+class PoissonClock {
   constructor (meanInterval, cb) {
     this._interval = meanInterval
     this.cb = cb
@@ -44,8 +44,8 @@ class Poisson {
   }
 }
 
-function poisson (meanInterval, cb) {
-  return new Poisson(meanInterval, cb)
+function poissonClock (meanInterval, cb) {
+  return new PoissonClock(meanInterval, cb)
 }
 
-export default poisson
+export default poissonClock

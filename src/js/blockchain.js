@@ -1,3 +1,5 @@
+const GENESIS_TIME = 1231006505
+
 function randomBinaryString (length) {
   return Array
     .apply(null, { length })
@@ -31,6 +33,10 @@ function expectedNumberOfHashes (requiredZeros) {
 
 function blocktime (chainheight) {
   return new Date((1231009380 + chainheight * 600) * 1000)
+}
+
+function chainHeight (gameTime) {
+  return Math.floor((gameTime - GENESIS_TIME) / 600)
 }
 
 function networkHashrate (chainheight) {
@@ -71,5 +77,6 @@ export {
   expectedNumberOfHashes,
   networkHashrate,
   metricUnit,
-  blocktime
+  blocktime,
+  chainHeight
 }

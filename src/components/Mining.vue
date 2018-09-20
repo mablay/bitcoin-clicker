@@ -1,7 +1,7 @@
 <template>
   <div class="view mining">
     <div class="stats">
-      <div>Date {{ blocktime }}</div>
+      <div>Date {{ gameTime }}</div>
       <div>Chain height {{ chainheight }}</div>
     </div>
     <div class="stats">
@@ -26,15 +26,15 @@
 
 <script>
 import { mapState } from 'vuex'
-import { blocktime } from '../js/blockchain'
+import { chainHeight } from '../js/blockchain'
 
 export default {
   name: 'Mining',
   computed: mapState({
     hashrateText: (state, getters) => getters.hashrateText,
     networkHashrate: (state, getters) => state.mining.networkHashrate,
-    chainheight: (state, getters) => state.mining.chainheight,
-    blocktime: (state) => blocktime(state.mining.chainheight).toLocaleDateString(),
+    chainheight: (state, getters) => chainHeight(state.game.time),
+    gameTime: (state) => (new Date(state.game.time * 1000)).toLocaleDateString(),
     btc: (state) => state.inventory.btc.toFixed(4),
     usd: (state) => state.inventory.usd.toFixed(2),
     btcPrice: (state) => state.exchange.btcInUSD,

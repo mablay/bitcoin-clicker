@@ -1,3 +1,5 @@
+import { GTIME_DAY } from './util'
+
 /**
  * Things the player can buy or sell
  */
@@ -11,7 +13,7 @@ const market = {
   computer: {
     title: 'PC',
     buyPrice: 200,
-    buyDuration: 1,
+    buyDuration: GTIME_DAY,
     gpus: 0,
     space: 1,
     watt: 100,
@@ -21,7 +23,7 @@ const market = {
     title: 'GPU',
     tech: { gpuMiner: 1 },
     buyPrice: 600,
-    buyDuration: 1,
+    buyDuration: GTIME_DAY,
     space: 0,
     watt: 130,
     kHps: 100000 // 100 MHps - 2 GHps @250W
@@ -30,7 +32,7 @@ const market = {
     title: 'Mining RIG',
     tech: { rig: 1 },
     buyPrice: 300,
-    buyDuration: 1,
+    buyDuration: GTIME_DAY * 3,
     gpus: 0,
     space: 3,
     watt: 80
@@ -39,7 +41,7 @@ const market = {
     title: 'FPGA',
     tech: { fpgaMiner: 1 },
     buyPrice: 2000,
-    buyDuration: 1,
+    buyDuration: GTIME_DAY * 3,
     space: 1,
     watt: 800,
     kHps: 100000 // 100 MHps - 200 MHps @15W
@@ -48,7 +50,7 @@ const market = {
     title: 'USB Miner',
     tech: { usbMiner: 1 },
     buyPrice: 35,
-    buyDuration: 1,
+    buyDuration: GTIME_DAY * 5,
     space: 0,
     watt: 2.5,
     kHps: 100000 // 100 MHps - 3 GHps @2.5W
@@ -57,7 +59,7 @@ const market = {
     title: 'Bitcoin ASIC',
     tech: { asic: 1 },
     buyPrice: 2300,
-    buyDuration: 20,
+    buyDuration: GTIME_DAY * 14,
     space: 1,
     watt: 1500,
     kHps: 1000000000 // 1 THps - 10 THps @1500W

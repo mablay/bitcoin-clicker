@@ -1,3 +1,5 @@
+const GTIME_DAY = 86400 // number of seconds in a day
+
 function filterProperties (object, filter) {
   return Object
     .keys(object)
@@ -19,5 +21,6 @@ function skipProperties (object, skip) {
 export {
   filterProperties,
   nonZeroProperties,
-  skipProperties
+  skipProperties,
+  GTIME_DAY
 }
