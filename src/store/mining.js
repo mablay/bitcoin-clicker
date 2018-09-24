@@ -37,7 +37,7 @@ const mining = {
       const blocks = elapsed / 600
       const share = getters.hashrate / getters.networkHashrate
       const reward = 12.5 * share * blocks
-      console.log('[mining] Nework hashrate %f', reward)
+      // console.log('[mining] Nework hashrate %f', reward)
       commit('addToInventory', { item: 'btc', amount: reward })
     }
   }

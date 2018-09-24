@@ -5,7 +5,7 @@
       v-for="(item, key) in market"
       v-if="isAvailable[key]"
       :key="key"
-      :duration="1000"
+      :duration="item.buyDuration"
       :enabled="isAffordable[key]"
       :context="key"
       :action="buy">Buy {{ item.title }}</Action>

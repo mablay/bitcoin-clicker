@@ -5,7 +5,7 @@
       v-for="(tech, key) in techtree"
       v-if="show[key]"
       :key="key"
-      :duration="tech[vm[key]].duration * 1000"
+      :duration="tech[vm[key]].duration"
       :enabled="true"
       :context="key"
       :action="research">{{ tech[vm[key]].title }}</Action>

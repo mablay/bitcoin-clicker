@@ -1,5 +1,6 @@
 import { GTIME_DAY } from '../js/util'
 const GAME_START_TIME = 1380585600 // october 2013
+const GAME_FRAME_DURATION = 20 // ms
 
 const game = {
   state: {
@@ -61,20 +62,20 @@ const game = {
       const elapsed = (millis / frameDuration) * speed
       const gameTime = state.time + elapsed
       commit('updateGameTime', gameTime)
-      console.log('[tick] game time', new Date(gameTime * 1000))
+      // console.log('[tick] game time', new Date(gameTime * 1000))
       this.dispatch('miningReward', elapsed)
       // commit('updateChainstate')
     },
     work ({ commit, state }, task) {
       return new Promise((resolve) => {
         const timer = setInterval(() => {
-          task.millis += 20 * state.speed
+          task.millis += (GAME_FRAME_DURATION / 1000) * state.speed
           if (task.millis >= task.duration) {
             task.millis = 1e16 // larger than any duration but not inifinity
             clearInterval(timer)
             resolve()
           }
-        }, 20)
+        }, GAME_FRAME_DURATION) // 20ms => ~50 FPS
       })
     }
   }
