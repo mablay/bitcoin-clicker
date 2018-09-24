@@ -26,18 +26,21 @@ const mining = {
     hashrateText: (state, { hashrate }) => metricUnit(hashrate, 'k').toString()
   },
   mutations: {
-    eMeter: (state, kJoules) => {
+    updateUtiltyBill: (state, kJoules) => {
       state.utilityBill += kJoules * state.kWhPrice
     }
   },
   actions: {
-    miningReward: ({ commit, state, getters }, elapsed) => {
+    mine: ({ commit, state, getters }, elapsed) => {
       // add coins to inventory according to hashrate
       const blocks = elapsed / 600
       const share = getters.hashrate / getters.networkHashrate
       const reward = 12.5 * share * blocks
       // console.log('[mining] Nework hashrate %f', reward)
       commit('addToInventory', { item: 'btc', amount: reward })
+
+      // energy consumption
+      commit('updateUtiltyBill', getters.watt / 1000)
     }
   }
 }

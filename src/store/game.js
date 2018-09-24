@@ -63,7 +63,7 @@ const game = {
       const gameTime = state.time + elapsed
       commit('updateGameTime', gameTime)
       // console.log('[tick] game time', new Date(gameTime * 1000))
-      this.dispatch('miningReward', elapsed)
+      this.dispatch('mine', elapsed)
       // commit('updateChainstate')
     },
     work ({ commit, state }, task) {
