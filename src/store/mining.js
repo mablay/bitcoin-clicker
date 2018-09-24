@@ -1,6 +1,5 @@
 import market from '../js/market'
 import { metricUnit, chainHeight } from '../js/blockchain'
-// import btcPrice from '../js/btc-price'
 
 // let lastHour = 0
 const mining = {

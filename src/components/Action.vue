@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     trigger () {
-      console.log('[action] duration', this.millis)
+      // console.log('[action] duration', this.millis)
       if (!this.enabled) return
       if (this.millis >= this.duration) { this.millis = 0 }
       if (this.millis === 0) {

@@ -36,7 +36,7 @@ export default {
     gameTime: (state) => (new Date(state.game.time * 1000)).toLocaleDateString(),
     btc: (state) => state.inventory.btc.toFixed(4),
     usd: (state) => state.inventory.usd.toFixed(2),
-    btcPrice: (state) => state.exchange.btcInUSD,
+    btcPrice: (state, getters) => getters.btcInUSD,
     kwhPrice: (state) => 0.19,
     powerConsumption: (state, getters) => getters.watt,
     utilityBill: (state) => state.mining.utilityBill

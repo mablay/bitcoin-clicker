@@ -8,7 +8,7 @@ const market = {
     title: 'Bitcoin',
     tech: { NYI: 1 },
     sellPrice: 500,
-    sellDuration: 10
+    sellDuration: 1 * DAY
   },
   computer: {
     title: 'PC',
