@@ -1,8 +1,8 @@
 import market from '../js/market'
-import { blocktime, networkHashrate, metricUnit } from '../js/blockchain'
-import btcPrice from '../js/btc-price'
+import { metricUnit, chainHeight } from '../js/blockchain'
+// import btcPrice from '../js/btc-price'
 
-let lastHour = 0
+// let lastHour = 0
 const mining = {
   state: {
     difficulty: 1,
@@ -21,41 +21,24 @@ const mining = {
       // console.log('[mining] getters.hashrate: new hashrate %sH/s', str)
       return hashrate
     },
+    foreignHashrate: (state, getters, { game }) => game.time,
+    networkHashrate: (state, getters) => getters.hashrate + getters.foreignHashrate,
+    chainheight: (state, getters, { game }) => chainHeight(game.time),
     hashrateText: (state, { hashrate }) => metricUnit(hashrate, 'k').toString()
   },
   mutations: {
-    // grow the chain length by one block
-    incrementChainstate: (state) => {
-      state.chainheight++
-      const nhr = networkHashrate(state.chainheight)
-      // console.log('network hashrate', metricUnit(nhr, 'T').toString())
-      // TODO networkHashrate = userHashrate + othersHashrate
-      state.networkHashrate = metricUnit(nhr, 'T').toString()
-    },
     eMeter: (state, kJoules) => {
       state.utilityBill += kJoules * state.kWhPrice
     }
   },
   actions: {
-    block ({ commit, state, getters }, n) {
-      commit('incrementChainstate')
-      const nhr = networkHashrate(state.chainheight) * 1000 * 1000 * 1000
-      const ratio = getters.hashrate / nhr
-      const btc = 50 * ratio
-      // console.log('[game] nhr %s hashrate', nhr, getters.hashrate)
-      commit('addToInventory', { item: 'btc', amount: btc })
-
-      // implicit second timer (triggers per hour)
-      const chainTime = blocktime(state.chainheight)
-      if (chainTime.getHours() !== lastHour) {
-        // electricity
-        // accumulate electricity costs
-        commit('eMeter', getters.watt / 1000)
-
-        // exchange rates
-        commit('updateBtcPrice', btcPrice(chainTime.getTime() / 1000))
-        lastHour = chainTime.getHours()
-      }
+    miningReward: ({ commit, state, getters }, elapsed) => {
+      // add coins to inventory according to hashrate
+      const blocks = elapsed / 600
+      const share = getters.hashrate / getters.networkHashrate
+      const reward = 12.5 * share * blocks
+      console.log('[mining] Nework hashrate %f', reward)
+      commit('addToInventory', { item: 'btc', amount: reward })
     }
   }
 }

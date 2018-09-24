@@ -1,3 +1,5 @@
+import { GTIME_DAY } from './util'
+
 /**
  * Array for tech with multiple levels or Object for 1 level
  * duration: (required) techtree duration units are days
@@ -10,9 +12,9 @@
  */
 const techtree = {
   computer: [
-    { title: 'Basic computer skills', duration: 5 },
-    { title: 'Advanced computer skills', duration: 5 },
-    { title: 'Pro computer skills', duration: 5 }
+    { title: 'Basic computer skills', duration: 5 * GTIME_DAY },
+    { title: 'Advanced computer skills', duration: 5 * GTIME_DAY },
+    { title: 'Pro computer skills', duration: 5 * GTIME_DAY }
   ],
   cpuMiner: [
     { title: 'Tweak miner configuration', duration: 5, require: { computer: 1 }, effect: { computer: { kHps: 2 } } },

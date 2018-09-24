@@ -26,14 +26,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import { chainHeight } from '../js/blockchain'
 
 export default {
   name: 'Mining',
   computed: mapState({
     hashrateText: (state, getters) => getters.hashrateText,
     networkHashrate: (state, getters) => state.mining.networkHashrate,
-    chainheight: (state, getters) => chainHeight(state.game.time),
+    chainheight: (state, getters) => getters.chainheight,
     gameTime: (state) => (new Date(state.game.time * 1000)).toLocaleDateString(),
     btc: (state) => state.inventory.btc.toFixed(4),
     usd: (state) => state.inventory.usd.toFixed(2),

@@ -1,5 +1,5 @@
 import { GTIME_DAY } from '../js/util'
-const GAME_START_TIME = 1380585600
+const GAME_START_TIME = 1380585600 // october 2013
 
 const game = {
   state: {
@@ -29,7 +29,11 @@ const game = {
      *  will take 5s RT to complete at speed 172800
      */
     time: GAME_START_TIME,
-    speed: GTIME_DAY, // = 60 * 60 * 24 => 1s ~ 1d game time
+    /* GT seconds elapsing in one RT second */
+    speed: GTIME_DAY, // 1s real time ~ 1d game time
+    /* game update frequency in milliseconds.
+        Does not affect speed! */
+    frameDuration: 1000,
     history: [],
     theme: 'dark'
   },
@@ -52,10 +56,14 @@ const game = {
   },
   actions: {
     tick ({ commit, state, getters }, millis) {
-      const elapsed = (millis / 1000) * state.speed
+      // every tick commits a game state update
+      const { frameDuration, speed } = state
+      const elapsed = (millis / frameDuration) * speed
       const gameTime = state.time + elapsed
       commit('updateGameTime', gameTime)
       console.log('[tick] game time', new Date(gameTime * 1000))
+      this.dispatch('miningReward', elapsed)
+      // commit('updateChainstate')
     },
     work ({ commit, state }, task) {
       return new Promise((resolve) => {

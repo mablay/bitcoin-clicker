@@ -37,9 +37,9 @@ export default {
   }),
   mounted () {
     const tick = (arg) => this.$store.dispatch('tick', arg)
-    const { speed } = this.$store.state.game
-    const blockTime = 600 // 600s RT ~ (600 / speed)s GT
-    this.clock = linearClock(1000, tick).start()
+    const { frameDuration } = this.$store.state.game
+    // const blockTime = 600 // 600s RT ~ (600 / speed)s GT
+    this.clock = linearClock(frameDuration, tick).start()
   },
   beforeDestroy () {
     this.clock.stop()
