@@ -6,7 +6,7 @@
     </div>
     <div class="stats">
       <div>Hashrate {{ hashrateText }}H/s</div>
-      <div>Network {{ networkHashrate }}H/s</div>
+      <div>Network {{ networkHashrateText }}</div>
     </div>
     <div class="stats">
       <div>BTC {{ btc }}</div>
@@ -26,12 +26,15 @@
 
 <script>
 import { mapState } from 'vuex'
+// import { metricUnit } from '../js/blockchain'
+import prefixer from 'si-prefixer'
 
 export default {
   name: 'Mining',
   computed: mapState({
     hashrateText: (state, getters) => getters.hashrateText,
-    networkHashrate: (state, getters) => state.mining.networkHashrate,
+    networkHashrate: (state, getters) => getters.networkHashrate,
+    networkHashrateText: (state, getters) => prefixer(getters.networkHashrate, 'H/s', 3),
     chainheight: (state, getters) => getters.chainheight,
     gameTime: (state) => (new Date(state.game.time * 1000)).toLocaleDateString(),
     btc: (state) => state.inventory.btc.toFixed(4),
@@ -46,14 +49,14 @@ export default {
 
 <style lang="scss">
 .mining {
-  font-size: 18px;
+  font-size: 20px;
   grid-area: mining;
   padding: 4px;
   text-align: left;
 
   .stats {
     display: inline-block;
-    width: 198px
+    width: 218px
   }
 }
 

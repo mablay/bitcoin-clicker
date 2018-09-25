@@ -39,9 +39,10 @@ function chainHeight (gameTime) {
   return Math.floor((gameTime - GENESIS_TIME) / 600)
 }
 
-function networkHashrate (chainheight) {
+// THps
+function foreignHashrate (chainheight) {
   // THps = 1e12 Hps
-  return 0.00000005 * Math.exp(chainheight * 0.000063786)
+  return 0.00000005 * Math.exp(chainheight * 0.000063786) * 1e12
 }
 
 const metricPrefixes = ['k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y']
@@ -75,7 +76,7 @@ export {
   binaryDifficultyString,
   hexDifficultyString,
   expectedNumberOfHashes,
-  networkHashrate,
+  foreignHashrate,
   metricUnit,
   blocktime,
   chainHeight

@@ -17,7 +17,7 @@ const market = {
     gpus: 0,
     space: 1,
     watt: 100,
-    kHps: 1000 // 1 MHps (80W) - 20 MHps (150W)
+    hps: 1e6 // 1 MHps (80W) - 20 MHps (150W)
   },
   gpu: {
     title: 'GPU',
@@ -26,7 +26,7 @@ const market = {
     buyDuration: 1 * DAY,
     space: 0,
     watt: 130,
-    kHps: 100000 // 100 MHps - 2 GHps @250W
+    hps: 100000 // 100 MHps - 2 GHps @250W
   },
   rig: {
     title: 'Mining RIG',
@@ -44,7 +44,7 @@ const market = {
     buyDuration: 3 * DAY,
     space: 1,
     watt: 800,
-    kHps: 100000 // 100 MHps - 200 MHps @15W
+    hps: 1e8 // 100 MHps - 200 MHps @15W
   },
   usbAsic: {
     title: 'USB Miner',
@@ -53,7 +53,7 @@ const market = {
     buyDuration: 5 * DAY,
     space: 0,
     watt: 2.5,
-    kHps: 100000 // 100 MHps - 3 GHps @2.5W
+    hps: 1e8 // 100 MHps - 3 GHps @2.5W
   },
   asic: {
     title: 'Bitcoin ASIC',
@@ -62,7 +62,7 @@ const market = {
     buyDuration: 14 * DAY,
     space: 1,
     watt: 1500,
-    kHps: 1000000000 // 1 THps - 10 THps @1500W
+    hps: 1e12 // 1 THps - 10 THps @1500W
   }
 }
 

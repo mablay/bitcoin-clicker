@@ -17,17 +17,17 @@ const techtree = {
     { title: 'Pro computer skills', duration: 5 * DAY }
   ],
   cpuMiner: [
-    { title: 'Tweak miner configuration', duration: 5 * DAY, require: { computer: 1 }, effect: { computer: { kHps: 2 } } },
-    { title: 'Overclock CPU', duration: 10 * DAY, require: { computer: 2 }, effect: { computer: { kHps: 2, watt: 1.5 } } },
-    { title: 'Improve CPU mining algorithm', duration: 20 * DAY, require: { computer: 3 }, effect: { computer: { kHps: 2 } } },
-    { title: 'Rewrite CPU miner in assembly', duration: 50 * DAY, effect: { computer: { kHps: 2 } } }
+    { title: 'Tweak miner configuration', duration: 5 * DAY, require: { computer: 1 }, effect: { computer: { hps: 2 } } },
+    { title: 'Overclock CPU', duration: 10 * DAY, require: { computer: 2 }, effect: { computer: { hps: 2, watt: 1.5 } } },
+    { title: 'Improve CPU mining algorithm', duration: 20 * DAY, require: { computer: 3 }, effect: { computer: { hps: 2 } } },
+    { title: 'Rewrite CPU miner in assembly', duration: 50 * DAY, effect: { computer: { hps: 2 } } }
   ],
   gpuMiner: [
     { title: 'Develop GPU mining', duration: 20 * DAY, require: { computer: 3 } },
-    { title: 'Overclock GPU', duration: 30 * DAY, effect: { gpu: { kHps: 2 } } },
-    { title: 'Optimize GPU driver', duration: 40 * DAY, effect: { gpu: { kHps: 2 } } },
-    { title: 'Improve GPU mining algorithm', duration: 50 * DAY, effect: { gpu: { kHps: 2 } } },
-    { title: 'Improve GPU mining algorithm again', duration: 70 * DAY, effect: { gpu: { kHps: 2.5 } } }
+    { title: 'Overclock GPU', duration: 30 * DAY, effect: { gpu: { hps: 2 } } },
+    { title: 'Optimize GPU driver', duration: 40 * DAY, effect: { gpu: { hps: 2 } } },
+    { title: 'Improve GPU mining algorithm', duration: 50 * DAY, effect: { gpu: { hps: 2 } } },
+    { title: 'Improve GPU mining algorithm again', duration: 70 * DAY, effect: { gpu: { hps: 2.5 } } }
   ],
   multiGPU: [
     { title: 'Develop multi GPU support - 2x', duration: 20 * DAY, require: { gpuMiner: 3 } },
