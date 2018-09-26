@@ -13,8 +13,8 @@ import { GTIME_DAY as DAY } from './util'
 const techtree = {
   computer: [
     { title: 'Basic computer skills', duration: 5 * DAY },
-    { title: 'Advanced computer skills', duration: 5 * DAY },
-    { title: 'Pro computer skills', duration: 5 * DAY }
+    { title: 'Advanced computer skills', duration: 10 * DAY },
+    { title: 'Pro computer skills', duration: 20 * DAY }
   ],
   cpuMiner: [
     { title: 'Tweak miner configuration', duration: 5 * DAY, require: { computer: 1 }, effect: { computer: { hps: 2 } } },
