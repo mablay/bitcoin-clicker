@@ -8,6 +8,7 @@
       :duration="item.buyDuration"
       :enabled="isAffordable[key]"
       :context="key"
+      :title="JSON.stringify(item, null, 4)"
       :action="buy">Buy {{ item.title }}</Action>
     <Action
       v-if="true"

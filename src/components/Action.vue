@@ -1,9 +1,12 @@
 <template>
   <button
+    v-b-tooltip.hover
     :style="{
       background: `linear-gradient(to left, ${buttonColor} ${progress}% , ${progressColor} ${progress}% )`
     }"
     :class="{ disabled: !enabled }"
+    :title="title"
+    data-placement="right"
     class="btn btn-action"
     @click="trigger()">
     <slot/>
@@ -33,6 +36,10 @@ export default {
     action: {
       type: Function,
       default: () => {}
+    },
+    title: {
+      type: String,
+      default: null
     }
   },
   data () {
@@ -65,6 +72,7 @@ export default {
 .btn-action {
   cursor: pointer;
   margin-bottom: 12px;
+  white-space: normal;
   width: 80%;
   font-size: 20px;
   /* background-color: lightblue; */

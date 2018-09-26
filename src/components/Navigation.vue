@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 #nav {
-  grid-area: nav;
+  // grid-area: nav;
   padding: 4px;
   text-align: right;
   .spanlink {

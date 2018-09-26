@@ -1,12 +1,26 @@
 <template>
-  <div class="game">
+  <div class="game container-fluid">
+    <div class="row">
+      <div class="col-xl">
+        <Mining/>
+      </div>
+      <div class="col-xl col-md-6">
+        <Production/>
+      </div>
+      <div class="col-xl col-md-6">
+        <Inventory/>
+      </div>
+      <div class="col-xl col-md-6">
+        <Research/>
+      </div>
+      <div class="col-xl col-md-6">
+        <Technology/>
+      </div>
+      <div class="col-xl d-none d-xl-block">
+        <History/>
+      </div>
+    </div>
     <Nav/>
-    <Mining/>
-    <History/>
-    <Research/>
-    <Production/>
-    <Inventory/>
-    <Technology/>
   </div>
 </template>
 
@@ -49,13 +63,13 @@ export default {
 
 <style>
 .game {
-  display: grid;
-  grid-template-columns: 200px 200px 300px 200px 200px auto;
+  /* display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
   grid-template-rows: 60px auto;
   grid-template-areas:
     "mining mining mining mining mining nav"
     "production inventory research technology history history"
-  ;
+  ; */
 }
 
 h1, h2 {
