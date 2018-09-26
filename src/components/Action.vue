@@ -6,7 +6,6 @@
     }"
     :class="{ disabled: !enabled }"
     :title="title"
-    data-placement="right"
     class="btn btn-action"
     @click="trigger()">
     <slot/>
