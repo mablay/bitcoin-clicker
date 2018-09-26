@@ -5,13 +5,13 @@
       v-for="(item, key) in market"
       v-if="isAvailable[key]"
       :key="key"
-      :duration="1000"
+      :duration="item.buyDuration"
       :enabled="isAffordable[key]"
       :context="key"
       :action="buy">Buy {{ item.title }}</Action>
     <Action
       v-if="true"
-      :duration="5000"
+      :duration="btcSellDuration"
       :enabled="btc > 0"
       :action="sell"
       context="btc">Sell BTC</Action>
@@ -37,7 +37,8 @@ export default {
       acc[item] = (state) => state.inventory[item] || 0
       return acc
     }, {})),
-    ...mapGetters(['isAvailable', 'isAffordable'])
+    ...mapGetters(['isAvailable', 'isAffordable']),
+    btcSellDuration: () => market.btcSellDuration
   },
   methods: mapActions(['buy', 'sell'])
 }

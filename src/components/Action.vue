@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { GTIME_DAY } from '../js/util'
+
 export default {
   name: 'Action',
   props: {
@@ -18,7 +20,7 @@ export default {
     //       instead of real world milliseconds
     duration: {
       type: Number,
-      default: 1000
+      default: GTIME_DAY // one day (sim time)
     },
     enabled: {
       type: Boolean,
@@ -47,6 +49,7 @@ export default {
   },
   methods: {
     trigger () {
+      // console.log('[action] duration', this.millis)
       if (!this.enabled) return
       if (this.millis >= this.duration) { this.millis = 0 }
       if (this.millis === 0) {

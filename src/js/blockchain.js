@@ -1,3 +1,5 @@
+const GENESIS_TIME = 1231006505
+
 function randomBinaryString (length) {
   return Array
     .apply(null, { length })
@@ -33,9 +35,14 @@ function blocktime (chainheight) {
   return new Date((1231009380 + chainheight * 600) * 1000)
 }
 
-function networkHashrate (chainheight) {
+function chainHeight (gameTime) {
+  return Math.floor((gameTime - GENESIS_TIME) / 600)
+}
+
+// THps
+function foreignHashrate (chainheight) {
   // THps = 1e12 Hps
-  return 0.00000005 * Math.exp(chainheight * 0.000063786)
+  return 0.00000005 * Math.exp(chainheight * 0.000063786) * 1e12
 }
 
 const metricPrefixes = ['k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y']
@@ -69,7 +76,8 @@ export {
   binaryDifficultyString,
   hexDifficultyString,
   expectedNumberOfHashes,
-  networkHashrate,
+  foreignHashrate,
   metricUnit,
-  blocktime
+  blocktime,
+  chainHeight
 }

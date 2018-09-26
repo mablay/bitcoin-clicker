@@ -15,7 +15,7 @@ const technology = {
       if (techtree[tech][level].effect) {
         // this is about the effects the tech has on things
         // effect could look like:
-        // { computer: { kHps: 2 } }
+        // { computer: { hps: 2 } }
         // which means: this tech doubles every computers hashrate
         const effect = techtree[tech][level].effect
         for (let thing in effect) {

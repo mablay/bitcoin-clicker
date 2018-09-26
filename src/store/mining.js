@@ -1,8 +1,9 @@
 import market from '../js/market'
-import { blocktime, networkHashrate, metricUnit } from '../js/blockchain'
-import btcPrice from '../js/btc-price'
+import { chainHeight, foreignHashrate } from '../js/blockchain'
+import prefixer from 'si-prefixer'
+const metric = (n) => prefixer(n, 'H/s', 3)
 
-let lastHour = 0
+// let lastHour = 0
 const mining = {
   state: {
     difficulty: 1,
@@ -13,49 +14,41 @@ const mining = {
   },
   getters: {
     hashrate: (state, getters, rootState) => {
-      const miners = Object.keys(market).filter(item => 'kHps' in market[item])
-      const hashrate = miners.reduce((kHps, miner) => {
-        return kHps + market[miner].kHps * rootState.inventory[miner]
+      const miners = Object.keys(market).filter(item => 'hps' in market[item])
+      const hashrate = miners.reduce((hps, miner) => {
+        return hps + market[miner].hps * rootState.inventory[miner]
       }, 0)
-      // const str = metricUnit(hashrate, 'k').toString()
+      // const str = prefixer(hashrate * 1000)
       // console.log('[mining] getters.hashrate: new hashrate %sH/s', str)
       return hashrate
     },
-    hashrateText: (state, { hashrate }) => metricUnit(hashrate, 'k').toString()
+    foreignHashrate: (state, getters, { game }) => foreignHashrate(getters.chainheight),
+    networkHashrate: (state, getters) => getters.hashrate + getters.foreignHashrate,
+    chainheight: (state, getters, { game }) => chainHeight(game.time),
+    hashrateText: (state, { hashrate }) => metric(hashrate)
   },
   mutations: {
-    // grow the chain length by one block
-    incrementChainstate: (state) => {
-      state.chainheight++
-      const nhr = networkHashrate(state.chainheight)
-      // console.log('network hashrate', metricUnit(nhr, 'T').toString())
-      // TODO networkHashrate = userHashrate + othersHashrate
-      state.networkHashrate = metricUnit(nhr, 'T').toString()
-    },
-    eMeter: (state, kJoules) => {
+    updateUtiltyBill: (state, kJoules) => {
       state.utilityBill += kJoules * state.kWhPrice
     }
   },
   actions: {
-    block ({ commit, state, getters }, n) {
-      commit('incrementChainstate')
-      const nhr = networkHashrate(state.chainheight) * 1000 * 1000 * 1000
-      const ratio = getters.hashrate / nhr
-      const btc = 50 * ratio
-      // console.log('[game] nhr %s hashrate', nhr, getters.hashrate)
-      commit('addToInventory', { item: 'btc', amount: btc })
+    mine: ({ commit, state, getters }, elapsed) => {
+      // add coins to inventory according to hashrate
+      const blocks = elapsed / 600
+      const share = getters.hashrate / getters.networkHashrate
+      const reward = 12.5 * share * blocks
+      console.log('[mining] mine', {
+        network: metric(getters.networkHashrate),
+        hashrate: metric(getters.hashrate),
+        share,
+        supply: 12.5 * blocks,
+        reward
+      })
+      commit('addToInventory', { item: 'btc', amount: reward })
 
-      // implicit second timer (triggers per hour)
-      const chainTime = blocktime(state.chainheight)
-      if (chainTime.getHours() !== lastHour) {
-        // electricity
-        // accumulate electricity costs
-        commit('eMeter', getters.watt / 1000)
-
-        // exchange rates
-        commit('updateBtcPrice', btcPrice(chainTime.getTime() / 1000))
-        lastHour = chainTime.getHours()
-      }
+      // energy consumption
+      commit('updateUtiltyBill', getters.watt / 1000)
     }
   }
 }

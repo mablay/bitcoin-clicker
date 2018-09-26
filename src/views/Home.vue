@@ -19,7 +19,7 @@ import Research from '@/components/Research.vue'
 import History from '@/components/History.vue'
 import Inventory from '@/components/Inventory.vue'
 import Technology from '@/components/Technology.vue'
-import poisson from '@/js/poisson'
+import { linearClock } from '@/js/clockwork'
 
 export default {
   name: 'Game',
@@ -36,10 +36,10 @@ export default {
     hashrate: (state, getters) => getters.hashrate
   }),
   mounted () {
-    const dispatchBlock = (arg) => this.$store.dispatch('block', arg)
-    const { speed } = this.$store.state.game
-    const blockTime = 1000 / speed // in millis
-    this.clock = poisson(blockTime, dispatchBlock).start()
+    const tick = (arg) => this.$store.dispatch('tick', arg)
+    const { frameDuration } = this.$store.state.game
+    // const blockTime = 600 // 600s RT ~ (600 / speed)s GT
+    this.clock = linearClock(frameDuration, tick).start()
   },
   beforeDestroy () {
     this.clock.stop()
