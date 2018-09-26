@@ -30,6 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~bootstrap/scss/bootstrap";
 @import 'styles/themes.scss';
 
 html,body,.theme,#app {
@@ -37,10 +38,11 @@ html,body,.theme,#app {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #app {
+  overflow: scroll;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,6 +52,11 @@ html,body,.theme,#app {
     color: themed('textColor');
     background-color: themed('backgroundColor');
   }
+}
+
+.tooltip-inner {
+  text-align: left;
+  white-space: pre-wrap;
 }
 
 </style>

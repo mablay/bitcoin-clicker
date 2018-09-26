@@ -8,6 +8,7 @@
       :duration="tech[vm[key]].duration"
       :enabled="true"
       :context="key"
+      :title="JSON.stringify(tech[vm[key]], null, 4)"
       :action="research">{{ tech[vm[key]].title }}</Action>
   </div>
 </template>
