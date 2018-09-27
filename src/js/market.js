@@ -26,7 +26,7 @@ const market = {
     buyDuration: 1 * DAY,
     space: 0,
     watt: 130,
-    hps: 100000 // 100 MHps - 2 GHps @250W
+    hps: 100e6 // 100 MHps - 2 GHps @250W
   },
   rig: {
     title: 'Mining RIG',
@@ -44,7 +44,7 @@ const market = {
     buyDuration: 3 * DAY,
     space: 1,
     watt: 800,
-    hps: 1e8 // 100 MHps - 200 MHps @15W
+    hps: 100e6 // 100 MHps - 200 MHps @15W
   },
   usbAsic: {
     title: 'USB Miner',
@@ -53,7 +53,7 @@ const market = {
     buyDuration: 5 * DAY,
     space: 0,
     watt: 2.5,
-    hps: 1e8 // 100 MHps - 3 GHps @2.5W
+    hps: 100e6 // 100 MHps - 3 GHps @2.5W
   },
   asic: {
     title: 'Bitcoin ASIC',
