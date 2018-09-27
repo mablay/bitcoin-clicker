@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     trigger () {
-      // console.log('[action] duration', this.millis)
+      this.$root.$emit('bv::hide::tooltip')
       if (!this.enabled) return
       if (this.millis >= this.duration) { this.millis = 0 }
       if (this.millis === 0) {
