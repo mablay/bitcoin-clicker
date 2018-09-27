@@ -46,10 +46,14 @@ html,body,.theme,#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 14px;
+  }
+
+  .stats {
+    font-size: 24px;
   }
 
   // color: #2c3e50;

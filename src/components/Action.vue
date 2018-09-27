@@ -72,7 +72,8 @@ export default {
   cursor: pointer;
   margin-bottom: 12px;
   white-space: normal;
-  width: 80%;
+  width: 100%;
+  margin-left: auto;
   font-size: 20px;
   /* background-color: lightblue; */
   padding: 12px;

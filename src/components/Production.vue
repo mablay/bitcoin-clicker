@@ -1,12 +1,14 @@
 <template>
   <div class="view production">
-    <h2>Market</h2>
+    <!-- <h2>Market</h2> -->
 
-    <h4 class="text-center">Savings</h4>
-    <div>${{ usd }} USD</div>
-    <div>&#8383;{{ btc }} BTC</div>
+    <div><b>Savings</b></div>
+    <div class="row">
+      <div class="col stats">${{ usd }} USD</div>
+      <div class="col stats">&#8383;{{ btc }} BTC</div>
+    </div>
 
-    <h4 class="text-center">Buy Products</h4>
+    <!-- <h4>Buy Products</h4> -->
     <Action
       v-for="(item, key) in market"
       v-if="isAvailable[key]"
@@ -17,8 +19,8 @@
       :title="JSON.stringify(item, null, 4)"
       :action="buy">Buy {{ item.title }}</Action>
 
-    <h4 class="text-center">BTC Price</h4>
-    <div>${{ btcPrice }} USD</div>
+    <div><b>BTC Price</b></div>
+    <div class="stats">${{ btcPrice }} USD</div>
     <Action
       v-if="true"
       :duration="btcSellDuration"
