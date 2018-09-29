@@ -9,19 +9,15 @@
       <div>Power {{ (powerConsumption / 1000).toFixed(2) }}kW</div>
     </div> -->
     <div class="row">
-      <div class="col">
-        <div class="row">
-          <div class="col">
-            <div><b>Hashrate</b></div>
-            <div class="stats">{{ hashrateText }}</div>
-          </div>
-          <div class="col">
-            <div><b>Network</b></div>
-            <div class="stats">{{ networkHashrateText }}</div>
-          </div>
-        </div>
+      <div class="col-6 col-sm col-xl-12">
+        <div><b>Hashrate</b></div>
+        <div class="stats">{{ hashrateText }}</div>
       </div>
-      <div class="col">
+      <div class="col-6 col-sm col-xl-12">
+        <div><b>Network</b></div>
+        <div class="stats">{{ networkHashrateText }}</div>
+      </div>
+      <div class="col-12 col-sm col-xl-12">
         <div><b>Daily Utility Bill</b></div>
         <div class="stats">${{ dailyUtilityBill.toFixed(2) }} USD</div>
       </div>

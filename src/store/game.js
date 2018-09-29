@@ -16,8 +16,6 @@ const game = {
      *             => blocktime ~ 6ms
      *             => 1 second ~ 1 game-day
      *
-     * TODO: change game speed to 100k and aggregate mining rewards per day.
-     *
      * GT: Game Time
      * RT: Real Time
      * GTU: Game time unit, here it's 1 day
@@ -59,11 +57,12 @@ const game = {
     tick ({ commit, state, getters }, millis) {
       // every tick commits a game state update
       const { frameDuration, speed } = state
-      const elapsed = (millis / frameDuration) * speed
+      const elapsed = (millis / frameDuration) * speed // GT seconds
       const gameTime = state.time + elapsed
       commit('updateGameTime', gameTime)
       // console.log('[tick] game time', new Date(gameTime * 1000))
       this.dispatch('mine', elapsed)
+      this.dispatch('payRent', elapsed)
       // commit('updateChainstate')
     },
     work ({ commit, state }, task) {

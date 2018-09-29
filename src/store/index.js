@@ -5,15 +5,17 @@ import mining from './mining'
 import exchange from './exchange'
 import inventory from './inventory'
 import technology from './technology'
+import deployment from './deployment'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     game,
-    exchange,
     mining,
+    exchange,
     inventory,
-    technology
+    technology,
+    deployment
   }
 })

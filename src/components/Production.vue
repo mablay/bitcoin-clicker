@@ -4,8 +4,8 @@
 
     <div><b>Savings</b></div>
     <div class="row">
-      <div class="col stats">${{ usd }} USD</div>
-      <div class="col stats">&#8383;{{ btc }} BTC</div>
+      <div class="col stats">$ {{ usd }} USD</div>
+      <div class="col stats">&#8383; {{ prefix(btc, {unit:'BTC'}) }}</div>
     </div>
 
     <!-- <h4>Buy Products</h4> -->
@@ -34,6 +34,7 @@
 import Action from './Action.vue'
 import { mapActions, mapState, mapGetters } from 'vuex'
 import market from '../js/market'
+const { prefix } = require('metric-prefix')
 
 export default {
   name: 'Production',
@@ -51,13 +52,16 @@ export default {
     }, {})),
     ...mapState({
       usd: (state) => state.inventory.usd.toFixed(2),
-      btc: (state) => state.inventory.btc.toFixed(4),
+      btc: (state) => state.inventory.btc,
       btcPrice: (state, getters) => getters.btcInUSD.toFixed(2)
     }),
     ...mapGetters(['isAvailable', 'isAffordable']),
     btcSellDuration: () => market.btcSellDuration
   },
-  methods: mapActions(['buy', 'sell'])
+  methods: {
+    ...mapActions(['buy', 'sell']),
+    prefix
+  }
 }
 </script>
 

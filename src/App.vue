@@ -52,6 +52,10 @@ html,body,.theme,#app {
     margin-top: 14px;
   }
 
+  h4 {
+    font-size: 16px;
+  }
+
   .stats {
     font-size: 24px;
   }

@@ -1,4 +1,5 @@
 import market from '../js/market'
+import rentalMarket from '../js/rental-market'
 
 const inventory = {
   state: {
@@ -6,8 +7,11 @@ const inventory = {
       acc[item] = 0
       return acc
     }, {}),
-    usd: 600,
+    usd: 2000,
     space: 10,
+    flat: 1,
+    office: 0,
+    datacenter: 0,
     btc: 0,
     computer: 0 // 100 kH/s
   },
@@ -20,6 +24,18 @@ const inventory = {
         watt += (market[item].watt || 0) * amount
       }
       return watt
+    },
+    totalSpace: (state) => {
+      return Object.keys(rentalMarket)
+        .reduce((space, housing) =>
+          space + rentalMarket[housing].space * state[housing], 0)
+      // let space = 0
+      // for (const housing of Object.keys(rentalMarket)) {
+      //   const sp = rentalMarket[housing].space
+      //   const amount = state[housing]
+      //   space += sp * amount
+      // }
+      // return space
     },
     // Inventory space consumption
     usedSpace: (state) => {
@@ -50,16 +66,16 @@ const inventory = {
       }, {})
     },
     // items the player has enough FIAT money to buy
-    isAffordable: (state, { usedSpace }) => {
+    isAffordable: (state, { usedSpace, totalSpace }) => {
       return Object.keys(market).reduce((acc, item) => {
         acc[item] = (market[item].buyPrice <= state.usd) &&
-          (state.space >= usedSpace + (market[item].space || 0))
+          (totalSpace >= usedSpace + (market[item].space || 0))
         return acc
       }, {})
     }
   },
   mutations: {
-    addToInventory: (state, { item, amount }) => (state[item] += amount),
+    addToInventory: (state, { item, amount = 1 }) => (state[item] += amount),
     buy: (state, { item, amount, price }) => {
       state[item] += amount
       state['usd'] -= price

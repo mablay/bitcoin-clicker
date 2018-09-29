@@ -4,21 +4,24 @@
       <div class="col-xl">
         <Mining/>
       </div>
-      <div class="col-xl col-md-6">
+      <div class="col-xl col-md-4">
         <Production/>
       </div>
-      <div class="col-xl col-md-6">
-        <Inventory/>
+      <div class="col-xl col-md-4">
+        <Deployment/>
       </div>
+      <!-- <div class="col-xl col-md-4">
+        <Inventory/>
+      </div> -->
       <div class="col-xl col-md-6">
         <Research/>
       </div>
       <div class="col-xl col-md-6">
         <Technology/>
       </div>
-      <!-- <div class="col-xl d-none d-xl-block">
+      <div class="col-xl d-none d-xl-block">
         <History/>
-      </div> -->
+      </div>
     </div>
     <Nav/>
   </div>
@@ -33,6 +36,7 @@ import Research from '@/components/Research.vue'
 import History from '@/components/History.vue'
 import Inventory from '@/components/Inventory.vue'
 import Technology from '@/components/Technology.vue'
+import Deployment from '@/components/Deployment.vue'
 import { linearClock } from '@/js/clockwork'
 
 export default {
@@ -44,7 +48,8 @@ export default {
     Mining,
     Inventory,
     Technology,
-    Research
+    Research,
+    Deployment
   },
   computed: mapState({
     hashrate: (state, getters) => getters.hashrate
