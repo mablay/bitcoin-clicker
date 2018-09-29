@@ -1,7 +1,13 @@
 import rentalMarket from '../js/rental-market'
+import market from '../js/market'
 
 const deployment = {
-  state: {},
+  state: {
+    // set each miner type to 0 (= none deployed)
+    ...Object.keys(market)
+      .filter(item => 'hps' in market[item])
+      .reduce((acc, item) => ({ ...acc, [item]: 0 }), {})
+  },
   getters: {
     dailyRental: (state, getters, rootState) =>
       Object.keys(rentalMarket).reduce((sum, housing) => {
