@@ -4,28 +4,23 @@
     <div class="row">
       <div class="col-sm-6">
         <h4>Space</h4>
-        <div class="stats">{{ totalSpace }}</div>
+        <div class="stats">{{ usedSpace }} / {{ totalSpace }}</div>
       </div>
       <div class="col-sm-6">
-        <h4>Used</h4>
-        <div class="stats">{{ usedSpace }}</div>
+        <h4>GPU Slots</h4>
+        <div class="stats">{{ gpusDeployed }} / {{ gpuSlots }}</div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-6">
-        <h4>GPU Slots</h4>
-        <div class="stats">{{ gpuSlots }}</div>
+        <h4>Daily Rent</h4>
+        <div class="stats danger">${{ dailyRental.toFixed(2) }}</div>
       </div>
       <div class="col-sm-6">
-        <h4>Used</h4>
-        <div class="stats">{{ gpusDeployed }}</div>
+        <h4>Daily Utility Bill</h4>
+        <div class="stats danger">${{ dailyUtilityBill.toFixed(2) }} USD</div>
       </div>
-    </div>
-
-    <div>
-      <h4>Daily Rent</h4>
-      <div class="stats">${{ dailyRental.toFixed(2) }}</div>
     </div>
 
     <Action
@@ -55,7 +50,8 @@ export default {
       'usedSpace',
       'gpuSlots',
       'gpusDeployed',
-      'dailyRental'
+      'dailyRental',
+      'dailyUtilityBill'
     ])
   },
   methods: mapActions(['rentSpace'])

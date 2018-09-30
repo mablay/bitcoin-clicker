@@ -9,29 +9,35 @@
       <div>Power {{ (powerConsumption / 1000).toFixed(2) }}kW</div>
     </div> -->
     <div class="row">
-      <div class="col-6 col-sm col-xl-12">
-        <div><b>Hashrate</b></div>
+      <div class="col-6 col-md-3">
+        <h4>Hashrate</h4>
         <div class="stats">{{ hashrateText }}</div>
       </div>
-      <div class="col-6 col-sm col-xl-12">
-        <div><b>Network</b></div>
+      <div class="col-6  col-md-3">
+        <h4>Network</h4>
         <div class="stats">{{ networkHashrateText }}</div>
       </div>
-      <div class="col-12 col-sm col-xl-12">
-        <div><b>Daily Utility Bill</b></div>
-        <div class="stats">${{ dailyUtilityBill.toFixed(2) }} USD</div>
+      <div class="col-6  col-md-3">
+        <h4>Date</h4>
+        <div class="stats">{{ gameTime }}</div>
+      </div>
+      <div class="col-6  col-md-3">
+        <h4>Settings</h4>
+        <div class="stats"><Nav/></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Nav from '@/components/Navigation.vue'
 import { mapState } from 'vuex'
 // import { metricUnit } from '../js/blockchain'
 import prefixer from 'si-prefixer'
 
 export default {
   name: 'Mining',
+  components: { Nav },
   computed: mapState({
     hashrateText: (state, getters) => getters.hashrateText,
     networkHashrate: (state, getters) => getters.networkHashrate,
@@ -43,8 +49,7 @@ export default {
     btcPrice: (state, getters) => getters.btcInUSD,
     kwhPrice: (state) => 0.19,
     powerConsumption: (state, getters) => getters.watt,
-    utilityBill: (state) => state.mining.utilityBill,
-    dailyUtilityBill: (state, getters) => getters.dailyUtilityBill
+    utilityBill: (state) => state.mining.utilityBill
   })
 }
 </script>

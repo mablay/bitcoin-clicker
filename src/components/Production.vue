@@ -4,7 +4,10 @@
 
     <div><b>Savings</b></div>
     <div class="row">
-      <div class="col stats">$ {{ usd }} USD</div>
+      <div
+        :class="{ danger: usd < 0 }"
+        class="col stats"
+      >$ {{ usd.toFixed(2) }} USD</div>
       <div class="col stats">&#8383; {{ prefix(btc, {unit:'BTC'}) }}</div>
     </div>
 
@@ -51,7 +54,7 @@ export default {
       return acc
     }, {})),
     ...mapState({
-      usd: (state) => state.inventory.usd.toFixed(2),
+      usd: (state) => state.inventory.usd,
       btc: (state) => state.inventory.btc,
       btcPrice: (state, getters) => getters.btcInUSD.toFixed(2)
     }),
