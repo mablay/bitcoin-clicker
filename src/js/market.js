@@ -14,7 +14,7 @@ const market = {
     title: 'PC',
     buyPrice: 200,
     buyDuration: 1 * DAY,
-    gpuSlots: 2,
+    gpuSlots: 1,
     space: 1,
     watt: 100,
     hps: 1e6 // 1 MHps (80W) - 20 MHps (150W)

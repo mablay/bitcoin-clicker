@@ -9,6 +9,7 @@ const deployment = {
       .reduce((acc, item) => ({ ...acc, [item]: 0 }), {})
   },
   getters: {
+    gpusDeployed: (state, getters, rootState) => rootState.inventory.gpu,
     dailyRental: (state, getters, rootState) =>
       Object.keys(rentalMarket).reduce((sum, housing) => {
         const amount = rootState.inventory[housing]

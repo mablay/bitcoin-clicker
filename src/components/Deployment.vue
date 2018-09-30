@@ -12,6 +12,17 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>GPU Slots</h4>
+        <div class="stats">{{ gpuSlots }}</div>
+      </div>
+      <div class="col-sm-6">
+        <h4>Used</h4>
+        <div class="stats">{{ gpusDeployed }}</div>
+      </div>
+    </div>
+
     <div>
       <h4>Daily Rent</h4>
       <div class="stats">${{ dailyRental.toFixed(2) }}</div>
@@ -42,6 +53,8 @@ export default {
     ...mapGetters([
       'totalSpace',
       'usedSpace',
+      'gpuSlots',
+      'gpusDeployed',
       'dailyRental'
     ])
   },

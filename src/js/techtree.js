@@ -12,9 +12,9 @@ import { GTIME_DAY as DAY } from './util'
  */
 const techtree = {
   computer: [
-    { title: 'Basic computer skills', duration: 5 * DAY },
-    { title: 'Advanced computer skills', duration: 10 * DAY },
-    { title: 'Pro computer skills', duration: 20 * DAY }
+    { title: 'Basic computer skills', duration: 5 * DAY }, // 5
+    { title: 'Advanced computer skills', duration: 10 * DAY }, // 10
+    { title: 'Pro computer skills', duration: 20 * DAY } // 20
   ],
   cpuMiner: [
     { title: 'Tweak miner configuration', duration: 5 * DAY, require: { computer: 1 }, effect: { computer: { hps: 2 } } },
@@ -24,21 +24,20 @@ const techtree = {
   ],
   gpuMiner: [
     { title: 'Develop GPU mining', duration: 20 * DAY, require: { computer: 3 } },
-    { title: 'Overclock GPU', duration: 30 * DAY, effect: { gpu: { hps: 2 } } },
-    { title: 'Optimize GPU driver', duration: 40 * DAY, effect: { gpu: { hps: 2 } } },
-    { title: 'Improve GPU mining algorithm', duration: 50 * DAY, effect: { gpu: { hps: 2 } } },
+    { title: 'Overclock GPU', duration: 30 * DAY, effect: { gpu: { hps: 2 } } }, // 30
+    { title: 'Optimize GPU driver', duration: 40 * DAY, effect: { gpu: { hps: 2 } } }, // 40
+    { title: 'Improve GPU mining algorithm', duration: 50 * DAY, effect: { gpu: { hps: 2 } } }, // 50
     { title: 'Improve GPU mining algorithm again', duration: 70 * DAY, effect: { gpu: { hps: 2.5 } } }
   ],
   multiGPU: [
-    { title: 'Develop multi GPU support - 2x', duration: 20 * DAY, require: { gpuMiner: 3 } },
-    { title: 'Develop multi GPU support - 3x', duration: 20 * DAY },
-    { title: 'Develop multi GPU support - 4x', duration: 20 * DAY },
-    { title: 'Develop multi GPU support - 5x', duration: 20 * DAY },
-    { title: 'Develop multi GPU support - 6x', duration: 20 * DAY }
+    { title: 'Develop multi GPU support - 2x', duration: 20 * DAY, require: { gpuMiner: 3 }, effect: { computer: { gpuSlots: 2 } } }, // 20
+    { title: 'Develop multi GPU support - 5x', duration: 20 * DAY, require: { rig: 1 }, effect: { rig: { gpuSlots: 5 / 3 } } }, // 20
+    { title: 'Develop multi GPU support - 7x', duration: 20 * DAY, effect: { rig: { gpuSlots: 7 / 5 } } }, // 20
+    { title: 'Develop multi GPU support - 10x', duration: 20 * DAY, effect: { rig: { gpuSlots: 10 / 7 } } } // 20
   ],
   rig: [
-    { title: 'Invent a GPU RIG', duration: 30 * DAY, require: { multiGPU: 4 } },
-    { title: 'Decrease RIG size', duration: 20 * DAY },
+    { title: 'Invent a GPU RIG', duration: 30 * DAY, require: { multiGPU: 1 } },
+    { title: 'Decrease RIG size', duration: 20 * DAY, effect: { rig: { space: 1 / 3 } } }, // 20
     { title: 'Improve airflow', duration: 20 * DAY }
   ],
   asic: [
