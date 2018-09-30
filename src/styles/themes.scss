@@ -12,7 +12,11 @@ $themes: (
     // buttonBorderFocus: solid 2px grey,
   ),
   dark: (
-    backgroundColor: #222,
+    highlightColor: #5BB6C1,
+    warningColor: #E1BF90,
+    muteColor: #5C6370,
+    dangerColor: #DE6D77,
+    backgroundColor: #21252B, // #222,
     textColor: #ddd,
     buttonTextColor: #DDD,
     buttonTextColorDisabled: #666,
@@ -22,7 +26,7 @@ $themes: (
     buttonProgressColor: #ddd,
     buttonBorderColor: #666,
     buttonBorderColorDisabled: #444,
-    buttonBorderHoverColor: #AAA,
+    buttonBorderHoverColor: #E1BF90, // #AAA
   ),
 );
 
