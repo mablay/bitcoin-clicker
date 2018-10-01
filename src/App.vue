@@ -64,6 +64,10 @@ html,body,.theme,#app {
   @include themify($themes) {
     color: themed('textColor');
     background-color: themed('backgroundColor');
+
+    .danger {
+      color: themed('dangerColor')
+    }
   }
 }
 

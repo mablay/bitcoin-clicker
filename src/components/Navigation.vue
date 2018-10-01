@@ -24,11 +24,11 @@ export default {
 <style lang="scss">
 #nav {
   // grid-area: nav;
-  padding: 4px;
-  text-align: right;
+  // padding: 4px;
+  // text-align: right;
   .spanlink {
-    font-size: 32px;
-    padding: 6px;
+    // font-size: 32px;
+    padding-right: 6px;
     cursor: pointer;
     // text-decoration: underline;
   }
