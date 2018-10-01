@@ -1,0 +1,31 @@
+@import 'styles/themes.scss';
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 14px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+.stats {
+  font-size: 24px;
+}
+
+.btn-action.btn-small {
+  border-radius: 1px;
+  width: auto;
+  font-size: 16px;
+  padding: 0 4px 0 4px;
+  border-radius: 8px;
+  @include themify($themes) {
+    // border-color: gold;
+    // background-color: #222;
+    // color: gold;
+
+    // border-color: themed('warningColor');
+    // color: themed('textColor');
+    // background-color: themed('backgroundColor');
+
+  }
+}

@@ -7,6 +7,11 @@ function sumMarketFeature (state, property) {
     .reduce((sum, item) => sum + state[item] * (market[item][property] || 0), 0)
 }
 
+function inStock (state, property) {
+  return Object.keys(state)
+    .filter(item => item in market && property in market[item])
+}
+
 const inventory = {
   state: {
     ...Object.keys(market).reduce((acc, item) => {
@@ -22,6 +27,7 @@ const inventory = {
     computer: 0 // 100 kH/s
   },
   getters: {
+    inventory: (state) => state,
     // Inventory power consumption
     watt: (state) => sumMarketFeature(state, 'watt'),
     // Total gpu slots
@@ -34,6 +40,7 @@ const inventory = {
         .reduce((space, housing) =>
           space + rentalMarket[housing].space * state[housing], 0)
     },
+    miners: (state) => inStock(state, 'hps'),
     // items that suffice their tech requirements
     isAvailable: (state, getters, { technology }) => {
       return Object.keys(market).reduce((acc, item) => {
@@ -52,10 +59,11 @@ const inventory = {
       }, {})
     },
     // items the player has enough FIAT money to buy
-    isAffordable: (state, { usedSpace, totalSpace }) => {
+    isAffordable: (state, { usedSpace, totalSpace, gpuSlots }) => {
       return Object.keys(market).reduce((acc, item) => {
         acc[item] = (market[item].buyPrice <= state.usd) &&
-          (totalSpace >= usedSpace + (market[item].space || 0))
+          (totalSpace >= usedSpace + (market[item].space || 0)) &&
+          (item !== 'gpu' || gpuSlots > state.gpu)
         return acc
       }, {})
     }

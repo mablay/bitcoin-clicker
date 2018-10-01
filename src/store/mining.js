@@ -1,4 +1,4 @@
-import market from '../js/market'
+// import market from '../js/market'
 // import { GTIME_DAY as DAY } from '../js/util'
 import { chainHeight, foreignHashrate } from '../js/blockchain'
 import prefixer from 'si-prefixer'
@@ -15,15 +15,15 @@ const mining = {
     joules: 0
   },
   getters: {
-    hashrate: (state, getters, rootState) => {
-      const miners = Object.keys(market).filter(item => 'hps' in market[item])
-      const hashrate = miners.reduce((hps, miner) => {
-        return hps + market[miner].hps * rootState.inventory[miner]
-      }, 0)
-      // const str = prefixer(hashrate * 1000)
-      // console.log('[mining] getters.hashrate: new hashrate %sH/s', str)
-      return hashrate
-    },
+    // hashrate: (state, getters, rootState) => {
+    //   const miners = Object.keys(market).filter(item => 'hps' in market[item])
+    //   const hashrate = miners.reduce((hps, miner) => {
+    //     return hps + market[miner].hps * rootState.inventory[miner]
+    //   }, 0)
+    //   // const str = prefixer(hashrate * 1000)
+    //   // console.log('[mining] getters.hashrate: new hashrate %sH/s', str)
+    //   return hashrate
+    // },
     foreignHashrate: (state, getters, { game }) => foreignHashrate(getters.chainheight),
     networkHashrate: (state, getters) => getters.hashrate + getters.foreignHashrate,
     chainheight: (state, getters, { game }) => chainHeight(game.time),

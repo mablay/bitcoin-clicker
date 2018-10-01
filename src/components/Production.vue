@@ -2,7 +2,7 @@
   <div class="view production">
     <!-- <h2>Market</h2> -->
 
-    <div><b>Savings</b></div>
+    <h4>Savings</h4>
     <div class="row">
       <div
         :class="{ danger: usd < 0 }"
@@ -12,24 +12,44 @@
     </div>
 
     <!-- <h4>Buy Products</h4> -->
-    <Action
+    <div
       v-for="(item, key) in market"
       v-if="isAvailable[key]"
       :key="key"
-      :duration="item.buyDuration"
-      :enabled="isAffordable[key]"
-      :context="key"
-      :title="JSON.stringify(item, null, 4)"
-      :action="buy">Buy {{ item.title }}</Action>
+      class="row">
+      <div class="col-6">
+        <Action
+          :duration="item.buyDuration"
+          :enabled="isAffordable[key]"
+          :context="key"
+          :title="JSON.stringify(item, null, 4)"
+          :action="buy">Buy {{ item.title }}</Action>
+      </div>
+      <div class="col-6">
+        <Action
+          :duration="item.deployDuration"
+          :enabled="inventory[key] > deployments[key]"
+          :context="key"
+          :title="JSON.stringify(item, null, 4)"
+          :action="deploy">Deploy {{ item.title }}</Action>
+      </div>
+    </div>
 
-    <div><b>BTC Price</b></div>
-    <div class="stats">${{ btcPrice }} USD</div>
-    <Action
-      v-if="true"
-      :duration="btcSellDuration"
-      :enabled="btc > 0"
-      :action="sell"
-      context="btc">Sell BTC</Action>
+    <div class="row">
+      <div class="col-6">
+        <h4>BTC Price</h4>
+        <div class="stats">${{ btcPrice }} USD</div>
+      </div>
+      <div class="col-6">
+        <Action
+          v-if="true"
+          :duration="btcSellDuration"
+          :enabled="btc > 0"
+          :action="sell"
+          class="align-bottom"
+          context="btc">Sell BTC</Action>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -58,11 +78,16 @@ export default {
       btc: (state) => state.inventory.btc,
       btcPrice: (state, getters) => getters.btcInUSD.toFixed(2)
     }),
-    ...mapGetters(['isAvailable', 'isAffordable']),
+    ...mapGetters([
+      'isAvailable',
+      'isAffordable',
+      'inventory',
+      'deployments'
+    ]),
     btcSellDuration: () => market.btcSellDuration
   },
   methods: {
-    ...mapActions(['buy', 'sell']),
+    ...mapActions(['buy', 'sell', 'deploy']),
     prefix
   }
 }

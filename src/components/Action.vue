@@ -70,7 +70,7 @@ export default {
 @import '../styles/themes.scss';
 .btn-action {
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-top: 12px;
   white-space: normal;
   width: 100%;
   margin-left: auto;

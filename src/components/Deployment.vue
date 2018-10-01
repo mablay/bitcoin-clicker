@@ -33,13 +33,25 @@
     <div class="row">
       <div class="col-4"><h4>Device</h4></div>
       <div class="col-4"><h4>Mining</h4></div>
-      <div class="col-4"><h4>Hashrate</h4></div>
+      <div class="col-4"><h4>Status</h4></div>
     </div>
 
-    <div class="row">
-      <div class="col-4"><div class="stats">Computer</div></div>
-      <div class="col-4"><div class="stats">3 / 4</div></div>
-      <div class="col-4"><a href="">deploy</a></div>
+    <div
+      v-for="({ id, title, stock, deployed, hashrate, duration }) in miners"
+      v-if="stock > 0"
+      :key="id"
+      class="row">
+      <div class="col-4"><div class="stats">{{ title }}</div></div>
+      <div class="col-4"><div class="stats">{{ deployed }} / {{ stock }}</div></div>
+      <div class="col-4">
+        {{ hashrate }}
+        <Action
+          v-if="deployed < stock"
+          :duration="duration"
+          :action="deploy"
+          :context="id"
+          class="btn-small">deploy</Action>
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +60,10 @@
 import Action from './Action.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import rentalMarket from '../js/rental-market'
+import market from '../js/market'
+import prefix from 'metric-prefix'
+import { GTIME_DAY as DAY } from '../js/util'
+const hpsPrefix = prefix({ unit: 'H/s' })
 
 export default {
   name: 'Deployment',
@@ -55,7 +71,17 @@ export default {
   computed: {
     ...mapState({
       space: (state) => state.inventory.space,
-      contracts: (state) => rentalMarket
+      contracts: (state) => rentalMarket,
+      miners (state, getters) {
+        return getters.miners.map(miner => ({
+          id: miner,
+          title: market[miner].title,
+          stock: getters.inventory[miner],
+          deployed: getters.deployments[miner],
+          hashrate: hpsPrefix(getters.deviceTypeHashrate[miner]),
+          duration: market[miner].deployDuration || 1 * DAY
+        }))
+      }
     }),
     ...mapGetters([
       'totalSpace',
@@ -63,10 +89,13 @@ export default {
       'gpuSlots',
       'gpusDeployed',
       'dailyRental',
-      'dailyUtilityBill'
+      'dailyUtilityBill',
+      'deployments',
+      'inventory',
+      'deviceTypeHashrate'
     ])
   },
-  methods: mapActions(['rentSpace'])
+  methods: mapActions(['rentSpace', 'deploy'])
 }
 </script>
 

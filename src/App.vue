@@ -32,6 +32,7 @@ export default {
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import 'styles/themes.scss';
+@import 'styles/game.scss';
 
 html,body,.theme,#app {
   width: 100%;
@@ -47,18 +48,6 @@ html,body,.theme,#app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 14px;
-  }
-
-  h4 {
-    font-size: 16px;
-  }
-
-  .stats {
-    font-size: 24px;
-  }
 
   // color: #2c3e50;
   @include themify($themes) {
