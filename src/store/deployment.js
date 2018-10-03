@@ -23,7 +23,7 @@ const deployment = {
       return Object.keys(state).reduce((sum, miner) => sum + getters.deviceTypeHashrate[miner], 0)
     },
     deployments: (state) => state,
-    gpusDeployed: (state, getters, rootState) => rootState.inventory.gpu,
+    gpusDeployed: (state, getters, rootState) => state.gpu,
     dailyRental: (state, getters, rootState) =>
       Object.keys(rentalMarket).reduce((sum, housing) => {
         const amount = rootState.inventory[housing]

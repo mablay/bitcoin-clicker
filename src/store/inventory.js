@@ -30,8 +30,13 @@ const inventory = {
     inventory: (state) => state,
     // Inventory power consumption
     watt: (state) => sumMarketFeature(state, 'watt'),
-    // Total gpu slots
-    gpuSlots: (state) => sumMarketFeature(state, 'gpuSlots'),
+    // total gpu slots of deployed devices
+    gpuSlots: (state, getters) => {
+      return inStock(state, 'gpuSlots').reduce((sum, item) => {
+        const deployed = getters.deployments[item] || 0
+        return sum + market[item].gpuSlots * deployed
+      }, 0)
+    },
     // Inventory space consumption
     usedSpace: (state) => sumMarketFeature(state, 'space'),
     // Space provided by rental contracts
