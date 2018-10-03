@@ -1,6 +1,9 @@
-# bitcoin-clicker
+# Bitcoin Clicker
 
 ![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
+
+![Screenshot](https://github.com/mablay/bitcoin-clicker/blob/master/public/img/screenshot-v0.3.1.png "Screenshot")
+
 
 Bitcoin clicker game
 
