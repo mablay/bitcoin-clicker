@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="col-6">Version</div>
-      <div class="col-6">v0.3.1</div>
+      <div class="col-6">v{{ version }}</div>
     </div>
     <div class="row">
       <div class="col-6">Permit Google analytics</div>
@@ -32,10 +32,11 @@
 
 <script>
 import { mapMutations } from 'vuex'
-
+// const { version } = require('../../package.json')
+import { version } from '../../package.json'
 export default {
   name: 'Settings',
-  data: () => ({ version: '0.3.1' }),
+  data: () => ({ version }),
   methods: {
     ...mapMutations(['setTheme']),
     toggleTracking ({ target }) {
