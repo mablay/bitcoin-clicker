@@ -22,7 +22,9 @@
         <div class="stats">{{ gameTime }}</div>
       </div>
       <div class="col-6  col-md-3">
-        <h4>Settings</h4>
+        <router-link :to="{ name: 'settings' }">
+          <h4>Settings</h4>
+        </router-link>
         <div class="stats"><Nav/></div>
       </div>
     </div>
