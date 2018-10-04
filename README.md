@@ -1,11 +1,13 @@
 # Bitcoin Clicker
 
+![version](https://img.shields.io/badge/version-v0.3.1-blue.svg)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 ![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
 
-![Screenshot](https://github.com/mablay/bitcoin-clicker/blob/master/public/img/screenshot-v0.3.1.png "Screenshot")
+I wanted to try out [VueJS](https://vuejs.org/) without writing another TODO app.
+So, Bitcoin clicker was born. It's a browser game with the objective to become the biggest Bitcoin miner! :rocket:
 
-
-Bitcoin clicker game
+![Screenshot](https://github.com/mablay/bitcoin-clicker/blob/master/public/img/screenshot-v0.3.1.png "v0.3.1")
 
 ## Project setup
 ```
