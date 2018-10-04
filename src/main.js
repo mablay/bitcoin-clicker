@@ -4,8 +4,17 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import BootstrapVue from 'bootstrap-vue'
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(BootstrapVue)
+
+Vue.use(VueAnalytics, {
+  id: 'UA-126957541-1',
+  debug: {
+    sendHitTask: process.env.NODE_ENV === 'production'
+  },
+  router
+})
 
 Vue.config.productionTip = false
 
