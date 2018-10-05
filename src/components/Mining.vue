@@ -34,7 +34,6 @@
 <script>
 import Nav from '@/components/Navigation.vue'
 import { mapState } from 'vuex'
-// import { metricUnit } from '../js/blockchain'
 import prefixer from 'si-prefixer'
 
 export default {

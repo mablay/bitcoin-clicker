@@ -32,7 +32,6 @@
 
 <script>
 import { mapMutations } from 'vuex'
-// const { version } = require('../../package.json')
 import { version } from '../../package.json'
 export default {
   name: 'Settings',
@@ -55,7 +54,7 @@ export default {
 <style lang="scss">
 
 .spanlink {
-  padding-right: 6px;
+  padding-right: 12px;
   cursor: pointer;
 }
 .spanlink:hover {
