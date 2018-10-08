@@ -1,6 +1,6 @@
 # Bitcoin Clicker
 
-![version](https://img.shields.io/badge/version-v0.3.1-blue.svg)
+![version](https://img.shields.io/badge/version-v0.3.4-blue.svg)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 ![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
 
@@ -9,34 +9,32 @@ So, Bitcoin clicker was born. It's a browser game with the objective to become t
 
 ![Screenshot](https://github.com/mablay/bitcoin-clicker/blob/master/public/img/screenshot-v0.3.1.png "v0.3.1")
 
+## Gameplay
+
+The player starts bitcoin mining back in 2013.
+Purchase and deployment of mining hardware as well
+as technological research is required to stay
+competitive in the market.
+Mined coins need to be sold to cover rent and utility bills.
+
+## Current State
+
+The game is in early development. The foundation is
+done, yet intuitive UI and story telling mechanics
+are still missing in action.
+
+I'm grateful for your constructive feedback! :speech_balloon:
+
 ## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+| Task | Command | Comment |
+|---|---|---|
+| Install | `npm install` | Run once after clone |
+| Build | `npm run build` | for static deployment |
+| Lint | `npm run lint` | standard |
+| Test | `npm run test` | using jest |
+| Deploy | `npm run deploy` | Deploys to Github pages |
 
-### Compiles and minifies for production
-```
-npm run build
-```
-For now, base path has to be fixed manually to resolve
-files on github pages.
+## Special Thanks :heart:
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Deploy to GitHub pages
-```
-npm run deploy
-```
+To Ottmar for early stage user feedback.
