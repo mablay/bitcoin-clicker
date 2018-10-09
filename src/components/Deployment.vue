@@ -1,5 +1,7 @@
 <template>
-  <div class="view deployment">
+  <div
+    v-if="achievements.firstMiner"
+    class="view deployment">
     <!-- <h2>Deployment</h2> -->
     <div class="row">
       <div class="col-6">
@@ -70,6 +72,7 @@ export default {
   components: { Action },
   computed: {
     ...mapState({
+      achievements: (state) => state.achievements,
       space: (state) => state.inventory.space,
       contracts: (state) => rentalMarket,
       miners (state, getters) {

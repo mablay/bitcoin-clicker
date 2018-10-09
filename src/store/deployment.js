@@ -41,17 +41,17 @@ const deployment = {
   actions: {
     deploy ({ commit, state }, task) {
       const device = task.context
-      console.log('[deploy] action deploy', task)
+      // console.log('[deploy] action deploy', task)
       this.dispatch('work', task).then(() => {
         commit('deploy', device)
         commit('log', `deployed ${device}`)
       })
     },
     rentSpace ({ commit, state }, task) {
-      console.log('[rentSpace]', task)
+      // console.log('[rentSpace]', task)
       const housing = task.context
       this.dispatch('work', task).then(() => {
-        console.log('housing', housing)
+        // console.log('housing', housing)
         commit('addToInventory', { item: housing })
         commit('log', `rented ${housing}`)
       })

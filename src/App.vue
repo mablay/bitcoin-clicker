@@ -10,6 +10,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { watchAchievements } from './store/achievements'
 export default {
   name: 'App',
   computed: mapState({
@@ -20,6 +21,7 @@ export default {
   }),
   mounted () {
     console.log('App started')
+    watchAchievements(this.$store)
   },
   methods: {
     getTheme () {

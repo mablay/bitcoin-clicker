@@ -16,18 +16,20 @@
       <div class="col-xl col-md-6">
         <Research/>
       </div>
-      <div class="col-xl-2 col-md-6">
+      <!-- <div class="col-xl-2 col-md-6">
         <Technology/>
-      </div>
+      </div> -->
       <!-- <div class="col-xl d-none d-xl-block">
         <History/>
       </div> -->
     </div>
+    <Modal/>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import Modal from '@/components/Modal.vue'
 import Mining from '@/components/Mining.vue'
 import Production from '@/components/Production.vue'
 import Research from '@/components/Research.vue'
@@ -41,6 +43,7 @@ export default {
   name: 'Game',
   components: {
     Production,
+    Modal,
     History,
     Mining,
     Inventory,

@@ -1,29 +1,45 @@
 <template>
-  <transition name="modal">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
+  <div v-if="show">
+    <transition
+      name="modal">
+      <div class="modal-mask">
+        <div class="modal-wrapper">
+          <div class="modal-container">
 
-          <div class="modal-header">
-            <slot name="header"/>
-          </div>
+            <div class="modal-header">
+              {{ title }}
+            </div>
 
-          <div class="modal-body">
-            <slot name="body"/>
-          </div>
+            <div class="modal-body">
+              {{ message }}
+            </div>
 
-          <div class="modal-footer">
-            <slot name="footer"/>
+            <div class="modal-footer">
+              <!-- <slot name="footer"/> -->
+              <button @click="hideModal">OK</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'Modal'
+  name: 'Modal',
+  computed: mapState({
+    title: (state) => state.modal.title,
+    message: (state) => state.modal.message,
+    show: (state) => state.modal.show
+  }),
+  methods: {
+    hideModal () {
+      this.$store.commit('hideModal')
+    }
+  }
 }
 </script>
 
