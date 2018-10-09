@@ -8,14 +8,14 @@
         <Production/>
       </div>
       <div class="col-xl col-md-6">
+        <Research/>
+      </div>
+      <div class="col-xl col-md-6">
         <Deployment/>
       </div>
       <!-- <div class="col-xl col-md-4">
         <Inventory/>
       </div> -->
-      <div class="col-xl col-md-6">
-        <Research/>
-      </div>
       <!-- <div class="col-xl-2 col-md-6">
         <Technology/>
       </div> -->
