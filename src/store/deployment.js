@@ -10,6 +10,8 @@ const deployment = {
   state: {
     // set each miner type to 0 (= none deployed)
     ...inStock(market, 'hps')
+      .reduce((acc, item) => ({ ...acc, [item]: 0 }), {}),
+    ...inStock(market, 'gpuSlots')
       .reduce((acc, item) => ({ ...acc, [item]: 0 }), {})
   },
   getters: {
@@ -20,7 +22,7 @@ const deployment = {
       }, {})
     },
     hashrate: (state, getters) => {
-      return Object.keys(state).reduce((sum, miner) => sum + getters.deviceTypeHashrate[miner], 0)
+      return Object.keys(state).reduce((sum, miner) => sum + (getters.deviceTypeHashrate[miner] || 0), 0)
     },
     deployments: (state) => state,
     gpusDeployed: (state, getters, rootState) => state.gpu,
