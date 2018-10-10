@@ -29,7 +29,9 @@ export default {
     font-size: 16px;
     padding-right: 20px;
   }
-
+  .spanlink {
+    padding-right: 14px;
+  }
   a {
     font-weight: bold;
     color: #2c3e50;
