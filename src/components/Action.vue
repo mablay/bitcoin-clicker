@@ -61,7 +61,7 @@ export default {
       if (this.millis === 0) {
         this.action(this)
         console.log('sound')
-        var audio = new Audio('/audio/click.mp3')
+        var audio = new Audio('audio/click.mp3')
         audio.play()
       }
     }
