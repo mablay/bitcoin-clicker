@@ -31,6 +31,11 @@ export default {
   }
   .spanlink {
     padding-right: 14px;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  .spanlink:hover {
+    opacity: 1.0;
   }
   a {
     font-weight: bold;
