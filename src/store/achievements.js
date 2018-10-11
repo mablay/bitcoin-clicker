@@ -24,11 +24,11 @@ const goals = {
 function watchAchievements (store) {
   Object.keys(goals).forEach((key) => {
     goals[key].unwatch = store.watch(goals[key].watch, (newVal, oldVal) => {
-      console.log('[achievements] %s: %s', key, goals[key].message)
+      // free some resources
       goals[key].unwatch()
       delete goals[key].watch
       delete goals[key].unwatch
-      store.commit('showModal', goals[key])
+      store.commit('log', goals[key].message)
       store.commit('achieve', key)
     })
   })

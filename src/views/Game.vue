@@ -19,9 +19,9 @@
       <!-- <div class="col-xl-2 col-md-6">
         <Technology/>
       </div> -->
-      <!-- <div class="col-xl d-none d-xl-block">
+      <div class="col-xl d-xl-block">
         <History/>
-      </div> -->
+      </div>
     </div>
     <Modal/>
   </div>
