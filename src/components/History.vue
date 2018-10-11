@@ -1,6 +1,6 @@
 <template>
   <div class="view history">
-    <h2>History</h2>
+    <h4>History</h4>
     <transition-group
       class="content"
       name="history-list"

@@ -1,6 +1,6 @@
 <template>
   <div class="view research">
-    <h2>Research</h2>
+    <h4>Research</h4>
     <Action
       v-for="(tech, key) in techtree"
       v-if="show[key]"

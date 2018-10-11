@@ -19,7 +19,7 @@
       <!-- <div class="col-xl-2 col-md-6">
         <Technology/>
       </div> -->
-      <div class="col-xl d-xl-block">
+      <div class="col-xl col-md-6">
         <History/>
       </div>
     </div>

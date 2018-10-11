@@ -39,9 +39,9 @@ const market = {
   },
   fpga: {
     title: 'FPGA',
-    tech: { fpgaMiner: 1 },
+    tech: { fpga: 1 },
     buyPrice: 2000,
-    buyDuration: 3 * DAY,
+    buyDuration: 6 * DAY,
     space: 1,
     watt: 800,
     hps: 100e6 // 100 MHps - 200 MHps @15W

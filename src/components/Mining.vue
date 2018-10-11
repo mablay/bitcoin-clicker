@@ -23,7 +23,11 @@
       </div>
       <div class="col-6  col-md-3">
         <router-link :to="{ name: 'settings' }">
-          <h4>Settings</h4>
+          <span class="spanlink">Settings</span>
+        </router-link>
+        <span class="spacer" />
+        <router-link :to="{ name: 'achievements' }">
+          <span class="spanlink">Achievements</span>
         </router-link>
         <div class="stats"><Nav/></div>
       </div>
@@ -57,15 +61,11 @@ export default {
 
 <style lang="scss">
 .mining {
-  // font-size: 20px;
-  // grid-area: mining;
   padding: 4px;
   text-align: left;
-
-  // .stats {
-  //   display: inline-block;
-  //   width: 250px
-  // }
 }
 
+.spacer {
+  padding-right: 12px;
+}
 </style>

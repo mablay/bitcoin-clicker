@@ -38,10 +38,19 @@ const techtree = {
   rig: [
     { title: 'Invent a GPU RIG', duration: 30 * DAY, require: { multiGPU: 1 } },
     { title: 'Decrease RIG size', duration: 20 * DAY, effect: { rig: { space: 1 / 3 } } }, // 20
-    { title: 'Improve airflow', duration: 20 * DAY }
+    { title: 'Improve GPU airflow', duration: 20 * DAY, effect: { gpu: { watt: 0.8 } } }
+  ],
+  fpga: [
+    { title: 'Invent FPGA miner', duration: 30 * DAY, require: { rig: 2 } },
+    { title: 'Optimize FPGA chip layout', duration: 20 * DAY, effect: { fpga: { hps: 2 } } },
+    { title: 'Improve FPGA supply chain', duration: 20 * DAY, effect: { fpga: { buyDuration: 1 / 6 } } }
+  ],
+  usbMiner: [
+    { title: 'Invent USB miner', duration: 30 * DAY, require: { fpga: 2 } },
+    { title: 'Increase USB miner hashrate', duration: 20 * DAY, effect: { usbMiner: { hps: 2 } } }
   ],
   asic: [
-    { title: 'Develop Bitcoin ASIC', duration: 300 * DAY, require: { rig: 3 } },
+    { title: 'Develop Bitcoin ASIC', duration: 300 * DAY, require: { usbAsic: 1 } },
     { title: 'Improve Bitcoin ASIC', duration: 100 * DAY },
     { title: 'Implement ASIC Boost', duration: 100 * DAY }
   ]
