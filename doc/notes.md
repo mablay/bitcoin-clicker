@@ -8,6 +8,10 @@ Inspired this project
 https://zck.me/bitcoin-clicker/  
 It seems sb. had a very similar idea ;-)
 
+### Tap Tap Mine
+https://www.crazygames.com/game/bitcoin-tap-tap-mine
+
+
 ## Resources used during development
 
 ### HTML Meta Tags
@@ -27,3 +31,8 @@ https://css-tricks.com/essential-meta-tags-social-media/
 
 Probably a good choice for audio support
 https://github.com/IonDen/ion.sound
+
+## GIF
+
+Online video to gif converter
+https://ezgif.com

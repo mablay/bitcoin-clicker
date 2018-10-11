@@ -7,7 +7,7 @@
 I wanted to try out [VueJS](https://vuejs.org/) without writing another TODO app.
 So, Bitcoin clicker was born. It's a browser game with the objective to become the biggest Bitcoin miner! :rocket:
 
-![Screenshot](https://github.com/mablay/bitcoin-clicker/blob/master/public/img/screenshot-v0.3.1.png "v0.3.1")
+![Gameplay](https://raw.githubusercontent.com/mablay/bitcoin-clicker/master/public/img/bitcoin-clicker-v0.3.5.gif "v0.3.5")
 
 ## Gameplay
 
