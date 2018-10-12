@@ -11,7 +11,7 @@ const goals = {
   firstMiner: {
     title: 'First miner deployed',
     message: `You can sell mined coins to pay your bills.
-    Mind, that the Bitcoin prices varys over time.`,
+    Mind, that the Bitcoin price varys over time.`,
     watch: (store) => store.deployment.computer === 1
   },
   fullFlat: {
