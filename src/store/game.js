@@ -55,6 +55,7 @@ const game = {
   },
   actions: {
     tick ({ commit, state, getters }, millis) {
+      // millis: elapsed time in RT milliseconds
       // every tick commits a game state update
       const { frameDuration, speed } = state
       const elapsed = (millis / frameDuration) * speed // GT seconds
@@ -63,7 +64,6 @@ const game = {
       // console.log('[tick] game time', new Date(gameTime * 1000))
       this.dispatch('mine', elapsed)
       this.dispatch('payRent', elapsed)
-      // commit('updateChainstate')
     },
     work ({ commit, state }, task) {
       return new Promise((resolve) => {
