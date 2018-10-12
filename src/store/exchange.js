@@ -1,4 +1,4 @@
-import btcPrice from '../js/btc-price'
+import { btcPrice } from '../js/btc-price'
 
 const exchange = {
   state: {
@@ -14,6 +14,11 @@ const exchange = {
     btcInUSD: (state, getters, rootState) => {
       // console.log(rootState.game.time)
       return btcPrice(rootState.game.time)
+    },
+    btcInUsdDerivation: (state, getters, rootState) => {
+      const speed = rootState.game.speed
+      const today = rootState.game.time
+      return btcPrice(today) - btcPrice(today - speed)
     }
   },
   actions: {

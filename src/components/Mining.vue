@@ -15,7 +15,12 @@
       </div>
       <div class="col-6  col-md-3">
         <h4>Network</h4>
-        <div class="stats">{{ networkHashrateText }}</div>
+        <div class="stats">
+          <Stats
+            :format="x => prefix(x)"
+            :offset="networkHashrate"
+            :rate="networkHashrateDerivation" />
+        </div>
       </div>
       <div class="col-6  col-md-3">
         <h4>Date</h4>
@@ -37,16 +42,18 @@
 
 <script>
 import Nav from '@/components/Navigation.vue'
+import Stats from '@/components/Stats.vue'
 import { mapState } from 'vuex'
-import prefixer from 'si-prefixer'
+import prefixer from 'metric-prefix'
+const hpsPrefix = prefixer({ unit: 'H/s' })
 
 export default {
   name: 'Mining',
-  components: { Nav },
+  components: { Nav, Stats },
   computed: mapState({
     hashrateText: (state, getters) => getters.hashrateText,
     networkHashrate: (state, getters) => getters.networkHashrate,
-    networkHashrateText: (state, getters) => prefixer(getters.networkHashrate, 'H/s', 3),
+    networkHashrateDerivation: (state, getters, rootState) => getters.networkHashrate / state.game.speed * 800,
     chainheight: (state, getters) => getters.chainheight,
     gameTime: (state) => (new Date(state.game.time * 1000)).toLocaleDateString(),
     btc: (state) => state.inventory.btc.toFixed(4),
@@ -55,7 +62,12 @@ export default {
     kwhPrice: (state) => 0.19,
     powerConsumption: (state, getters) => getters.watt,
     utilityBill: (state) => state.mining.utilityBill
-  })
+  }),
+  methods: {
+    prefix (value) {
+      return hpsPrefix(value)
+    }
+  }
 }
 </script>
 

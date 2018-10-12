@@ -1,5 +1,5 @@
 import { metricUnit } from '@/js/blockchain.js'
-import btcPrice from '@/js/btc-price'
+import { btcPrice } from '@/js/btc-price'
 
 describe('blockchain.js', () => {
   it('estimates networkHashrate based on chain height', () => {

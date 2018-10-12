@@ -39,7 +39,7 @@
     </div>
 
     <div
-      v-for="({ id, title, stock, deployed, hashrate, duration }) in miners"
+      v-for="({ id, title, stock, deployed, hashrate }) in miners"
       v-if="stock > 0"
       :key="id"
       class="row">
@@ -47,12 +47,12 @@
       <div class="col-4"><div class="stats">{{ deployed }} / {{ stock }}</div></div>
       <div class="col-4">
         {{ hashrate }}
-        <Action
+        <!-- <Action
           v-if="deployed < stock"
           :duration="duration"
           :action="deploy"
           :context="id"
-          class="btn-small">deploy</Action>
+          class="btn-small">deploy</Action> -->
       </div>
     </div>
   </div>

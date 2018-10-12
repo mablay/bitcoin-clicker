@@ -29,7 +29,7 @@ const game = {
      */
     time: GAME_START_TIME,
     /* GT seconds elapsing in one RT second */
-    speed: GTIME_DAY * 3, // 1s real time ~ 1d game time
+    speed: GTIME_DAY * 1, // 1s real time ~ 1d game time
     /* game update frequency in milliseconds.
         Does not affect speed! */
     frameDuration: 1000,

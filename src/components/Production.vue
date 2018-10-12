@@ -6,8 +6,12 @@
     <div class="row">
       <div
         :class="{ danger: usd < 0 }"
-        class="col stats"
-      >$ {{ usd.toFixed(2) }} USD</div>
+        class="col stats">
+        <Stats
+          :format="x => `$ ${x.toFixed(2)} USD`"
+          :offset="usd"
+          :rate="-dailyExpenses" />
+      </div>
       <div class="col stats">&#8383; {{ prefix(btc, {unit:'BTC'}) }}</div>
     </div>
 
@@ -38,7 +42,12 @@
     <div class="row">
       <div class="col-6">
         <h4>BTC Price</h4>
-        <div class="stats">${{ btcPrice }} USD</div>
+        <div class="stats">
+          <Stats
+            :format="x => `\$${x.toFixed(2)} USD`"
+            :offset="btcInUSD"
+            :rate="btcInUsdDerivation" />
+        </div>
       </div>
       <div class="col-6">
         <Action
@@ -55,13 +64,14 @@
 
 <script>
 import Action from './Action.vue'
+import Stats from './Stats.vue'
 import { mapActions, mapState, mapGetters } from 'vuex'
 import market from '../js/market'
 const { prefix } = require('metric-prefix')
 
 export default {
   name: 'Production',
-  components: { Action },
+  components: { Action, Stats },
   data () {
     return {
       market,
@@ -76,13 +86,16 @@ export default {
     ...mapState({
       usd: (state) => state.inventory.usd,
       btc: (state) => state.inventory.btc,
-      btcPrice: (state, getters) => getters.btcInUSD.toFixed(2)
+      btcPrice: (state, getters) => getters.btcInUSD.toFixed(2),
+      dailyExpenses: (state, getters, rootState) => getters.dailyRental + getters.dailyUtilityBill
     }),
     ...mapGetters([
       'isAvailable',
       'isAffordable',
       'inventory',
-      'deployments'
+      'deployments',
+      'btcInUSD',
+      'btcInUsdDerivation'
     ]),
     btcSellDuration: () => market.btcSellDuration
   },

@@ -56,4 +56,17 @@ function btcPrice (time) {
   }
 }
 
-module.exports = btcPrice
+function btcPriceDerivation (time) {
+  if (time < start) {
+    return 0
+  } else if (time > end) {
+    return (time - end) / 2500
+  } else {
+    return interpolate(time) - interpolate(time - 86400)
+  }
+}
+
+module.exports = {
+  btcPrice,
+  btcPriceDerivation
+}

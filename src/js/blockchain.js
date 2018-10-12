@@ -42,7 +42,8 @@ function chainHeight (gameTime) {
 // THps
 function foreignHashrate (chainheight) {
   // THps = 1e12 Hps
-  return 0.00000005 * Math.exp(chainheight * 0.000063786) * 1e12
+  // return 0.00000005 * Math.exp(chainheight * 0.000063786) * 1e12
+  return 50000 * Math.exp(chainheight * 0.000063786)
 }
 
 const metricPrefixes = ['k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y']
