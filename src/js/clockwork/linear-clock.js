@@ -7,7 +7,7 @@ class LinearClock {
   }
 
   start () {
-    if (this.handler) return
+    if (this.handler) return this
     console.log(`[lclock] START (${this._interval}ms)`)
     this.handler = setInterval(() => this.cb(this._interval), this._interval)
     return this
