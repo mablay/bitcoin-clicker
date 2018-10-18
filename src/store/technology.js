@@ -38,7 +38,7 @@ const technology = {
         // In the history log we'll show tech `level + 1`
         // because users like to start counting
         // with 1 instead of 0
-        commit('log', `researched ${tech} (${level + 1})`)
+        commit('log', `researched: ${techtree[tech][level].title} (${level + 1})`)
       })
     }
   }
