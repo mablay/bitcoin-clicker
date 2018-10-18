@@ -1,6 +1,7 @@
-import { GTIME_DAY } from '../js/util'
+import { GTIME_DAY } from '../js/util' // ms
+import { clockwork } from '@/js/clockwork'
 const GAME_START_TIME = 1380585600 // october 2013
-const GAME_FRAME_DURATION = 20 // ms
+const GAME_FRAME_DURATION = 20
 
 const game = {
   state: {
@@ -67,14 +68,14 @@ const game = {
     },
     work ({ commit, state }, task) {
       return new Promise((resolve) => {
-        const timer = setInterval(() => {
+        const clock = clockwork.create(GAME_FRAME_DURATION, () => {
           task.millis += (GAME_FRAME_DURATION / 1000) * state.speed
           if (task.millis >= task.duration) {
             task.millis = 1e16 // larger than any duration but not inifinity
-            clearInterval(timer)
+            clockwork.destroy(clock)
             resolve()
           }
-        }, GAME_FRAME_DURATION) // 20ms => ~50 FPS
+        })
       })
     }
   }

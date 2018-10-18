@@ -9,17 +9,36 @@
       @click="setTheme('dark')">&#9790;</span>
 
     <span class="version"> v{{ version }}</span>
+
+    <span
+      class="spanlink"
+      @click="pause">&#9724;</span>
+    <span
+      class="spanlink"
+      @click="resume">&#9658;</span>
+
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
 import { version } from '../../package.json'
+import { clockwork } from '../js/clockwork/'
 
 export default {
   name: 'Nav',
   data: () => ({ version }),
-  methods: mapMutations(['setTheme'])
+  methods: {
+    ...mapMutations(['setTheme']),
+    resume () {
+      clockwork.start()
+      console.log('resume')
+    },
+    pause () {
+      clockwork.stop()
+      console.log('pause')
+    }
+  }
 }
 </script>
 

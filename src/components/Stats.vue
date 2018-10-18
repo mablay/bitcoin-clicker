@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { linearClock } from '../js/clockwork'
+import { clockwork } from '../js/clockwork'
 const FPS = 25
 const FRAME_DURATION = 1000 / FPS
 
@@ -22,13 +22,16 @@ export default {
       this.value = val
     }
   },
-  mounted () {
-    this.clock = linearClock(FRAME_DURATION, () => {
+  created () {
+    this.clock = clockwork.create(FRAME_DURATION, () => {
       this.value += this.rate / FPS
-    }).start()
+    })
+  },
+  mounted () {
+    // clockwork.start(this.clock)
   },
   beforeDestroy () {
-    this.clock.stop()
+    clockwork.destroy(this.clock)
   }
 }
 </script>

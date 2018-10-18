@@ -1,5 +1,5 @@
 class LinearClock {
-  constructor (interval, cb) {
+  constructor (interval, cb, name) {
     this._interval = interval
     this.cb = cb
     this.handler = null
@@ -8,14 +8,14 @@ class LinearClock {
 
   start () {
     if (this.handler) return this
-    console.log(`[lclock] START (${this._interval}ms)`)
+    console.log(`[lclock] START ${this.name} (${this._interval}ms)`)
     this.handler = setInterval(() => this.cb(this._interval), this._interval)
     return this
   }
 
   stop () {
     if (this.handler) {
-      console.log('[lclock] STOP')
+      console.log(`[lclock] STOP ${this.name} (${this._interval}ms)`)
       clearInterval(this.handler)
       this.handler = null
     }
@@ -33,8 +33,8 @@ class LinearClock {
   }
 }
 
-function linearClock (interval, cb) {
-  return new LinearClock(interval, cb)
+function linearClock (interval, cb, name) {
+  return new LinearClock(interval, cb, name)
 }
 
 export default linearClock

@@ -1,5 +1,6 @@
 <template>
-  <div class="game container-fluid">
+  <div
+    class="game container-fluid">
     <div class="row">
       <div class="col-12">
         <Mining/>
@@ -37,7 +38,7 @@ import History from '@/components/History.vue'
 import Inventory from '@/components/Inventory.vue'
 import Technology from '@/components/Technology.vue'
 import Deployment from '@/components/Deployment.vue'
-import { linearClock } from '@/js/clockwork'
+import { clockwork } from '../js/clockwork/'
 
 export default {
   name: 'Game',
@@ -51,17 +52,28 @@ export default {
     Research,
     Deployment
   },
+  state: () => ({ clock: null }),
   computed: mapState({
-    hashrate: (state, getters) => getters.hashrate
+    hashrate: (state, getters) => getters.hashrate,
+    gamePaused: (state) => {
+      const paused = state.game.gamePaused
+      console.log('[Game] state:', paused ? 'running' : 'paused')
+    }
   }),
-  mounted () {
+  created () {
     const tick = (arg) => this.$store.dispatch('tick', arg)
     const { frameDuration } = this.$store.state.game
     // const blockTime = 600 // 600s RT ~ (600 / speed)s GT
-    this.clock = linearClock(frameDuration, tick).start()
+    // this.clock = linearClock(frameDuration, tick).start()
+    this.clock = clockwork.create(frameDuration, tick)
+  },
+  mounted () {
+    // clockwork.start(this.clock)
   },
   beforeDestroy () {
-    this.clock.stop()
+    // this.clock.stop()
+    console.log('game clock should stop')
+    clockwork.destroy(this.clock)
   }
 }
 </script>
