@@ -1,29 +1,20 @@
 <template>
   <div id="nav">
-    <span
-      class="spanlink"
-      @click="setTheme('light')">&#9728;</span>
-
-    <span
-      class="spanlink"
-      @click="setTheme('dark')">&#9790;</span>
-
+    <ThemeSwitch />
     <span class="version"> v{{ version }}</span>
-
     <GameTime />
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 import { version } from '../../package.json'
 import GameTime from '@/components/GameTime'
+import ThemeSwitch from '@/components/ThemeSwitch'
 
 export default {
   name: 'Nav',
-  components: { GameTime },
-  data: () => ({ version }),
-  methods: mapMutations(['setTheme'])
+  components: { GameTime, ThemeSwitch },
+  data: () => ({ version })
 }
 </script>
 
