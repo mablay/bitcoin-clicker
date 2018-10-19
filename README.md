@@ -1,6 +1,6 @@
 # Bitcoin Clicker
 
-![version](https://img.shields.io/badge/version-v0.3.7-blue.svg)
+![version](https://img.shields.io/badge/version-v0.3.8-blue.svg)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 ![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
 
@@ -35,6 +35,6 @@ I'm grateful for your constructive feedback! :speech_balloon:
 | Test | `npm run test` | using jest |
 | Deploy | `npm run deploy` | Deploys to Github pages |
 
-## Special Thanks :heart:
+## Special Thanks
 
-To Ottmar for early stage user feedback.
+To Ottmar for early stage user feedback. :thumbsup:
