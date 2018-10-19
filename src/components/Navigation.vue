@@ -10,35 +10,20 @@
 
     <span class="version"> v{{ version }}</span>
 
-    <span
-      class="spanlink"
-      @click="pause">&#9724;</span>
-    <span
-      class="spanlink"
-      @click="resume">&#9658;</span>
-
+    <GameTime />
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
 import { version } from '../../package.json'
-import { clockwork } from '../js/clockwork/'
+import GameTime from '@/components/GameTime'
 
 export default {
   name: 'Nav',
+  components: { GameTime },
   data: () => ({ version }),
-  methods: {
-    ...mapMutations(['setTheme']),
-    resume () {
-      clockwork.start()
-      console.log('resume')
-    },
-    pause () {
-      clockwork.stop()
-      console.log('pause')
-    }
-  }
+  methods: mapMutations(['setTheme'])
 }
 </script>
 
