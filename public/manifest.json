@@ -1,6 +1,6 @@
 {
-  "name": "bitcoin-clicker",
-  "short_name": "bitcoin-clicker",
+  "name": "Bitcoin Clicker",
+  "short_name": "BTC Clicker",
   "icons": [
     {
       "src": "/bitcoin-clicker/img/icons/android-chrome-192x192.png",
@@ -13,8 +13,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/bitcoin-clicker/index.html",
-  "display": "fullscreen",
+  "start_url": ".",
+  "display": "standalone",
   "background_color": "#202020",
   "theme_color": "#ff9900"
 }

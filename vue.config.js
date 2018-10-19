@@ -3,9 +3,9 @@ module.exports = {
     ? '/bitcoin-clicker/'
     : '/',
   pwa: {
-    name: 'btc-clicker',
+    name: 'Bitcoin Clicker',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'translucent',
+    appleMobileWebAppStatusBarStyle: 'black',
     themeColor: '#FF9900'
   }
 }
