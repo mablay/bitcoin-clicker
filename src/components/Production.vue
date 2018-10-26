@@ -6,12 +6,7 @@
     <div class="row">
       <div
         :class="{ danger: usd < 0 }"
-        class="col stats">
-        <Stats
-          :format="x => `$ ${x.toFixed(2)} USD`"
-          :offset="usd"
-          :rate="-dailyExpenses" />
-      </div>
+        class="col stats">$ {{ usd.toFixed(2) }} USD</div>
       <div class="col stats">&#8383; {{ prefix(btc, {unit:'BTC'}) }}</div>
     </div>
 
