@@ -6,6 +6,6 @@ module.exports = {
     name: 'Bitcoin Clicker',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
-    themeColor: '#FF9900'
+    themeColor: '#202020'
   }
 }
