@@ -61,6 +61,7 @@ export default {
     }
   }),
   created () {
+    this.$store.dispatch('beginningOfMonth')
     const tick = (arg) => this.$store.dispatch('tick', arg)
     const { frameDuration } = this.$store.state.game
     // const blockTime = 600 // 600s RT ~ (600 / speed)s GT

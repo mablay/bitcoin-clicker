@@ -26,12 +26,13 @@ const deployment = {
     },
     deployments: (state) => state,
     gpusDeployed: (state, getters, rootState) => state.gpu,
-    dailyRental: (state, getters, rootState) =>
+    monthlyRental: (state, getters, rootState) =>
       Object.keys(rentalMarket).reduce((sum, housing) => {
         const amount = rootState.inventory[housing]
         const price = rentalMarket[housing].rentalPrice
-        return sum + amount * price / 30
-      }, 0)
+        return sum + amount * price
+      }, 0),
+    dailyRental: (state, getters) => getters.monthlyRental / 356 * 12
   },
   mutations: {
     deploy: (state, item) => {
@@ -56,10 +57,13 @@ const deployment = {
         commit('log', `rented ${housing}`)
       })
     },
-    payRent ({ commit, state, getters }, elapsed) {
-      commit('addToInventory', { item: 'usd', amount: -getters.dailyRental })
-      // console.warn('[payRent] NYI!', getters.dailyRental)
+    beginningOfMonth: ({ getters, commit }) => {
+      console.log('[deployment] beginningOfMonth')
+      commit('chargeCosts', { position: 'rent', amount: getters.monthlyRental })
     }
+    // payRent ({ commit, state, getters }) {
+    //   commit('addToInventory', { item: 'usd', amount: -getters.monthlyRental })
+    // }
   }
 }
 

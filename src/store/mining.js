@@ -28,7 +28,8 @@ const mining = {
     networkHashrate: (state, getters) => getters.hashrate + getters.foreignHashrate,
     chainheight: (state, getters, { game }) => chainHeight(game.time),
     hashrateText: (state, { hashrate }) => metric(hashrate),
-    dailyUtilityBill: (state, getters) => getters.watt / 1000 * kWhPrice * 24
+    dailyUtilityBill: (state, getters) => getters.watt / 1000 * kWhPrice * 24,
+    monthlyUtilityBill: (state, getters) => getters.dailyUtilityBill / 12 * 356
   },
   mutations: {
     consumeEnergy: (state, joules) => {
@@ -36,9 +37,9 @@ const mining = {
     }
   },
   actions: {
-    mine: ({ commit, state, getters }, elapsed) => {
+    mine: ({ commit, state, getters }, seconds) => {
       // add coins to inventory according to hashrate
-      const blocks = elapsed / 600
+      const blocks = seconds / 600
       const share = getters.hashrate / getters.networkHashrate
       const reward = 12.5 * share * blocks
       // console.log('[mining] mine', {
@@ -51,11 +52,13 @@ const mining = {
       commit('addToInventory', { item: 'btc', amount: reward })
 
       // energy consumption
-      commit('consumeEnergy', getters.watt * elapsed)
+      commit('consumeEnergy', getters.watt * seconds)
 
       // pay utility bill
-      const cost = getters.watt / 1000 * elapsed / 3600 * kWhPrice
-      commit('addToInventory', { item: 'usd', amount: -cost })
+      commit('chargeCosts', {
+        position: 'utility',
+        amount: getters.watt / 1000 * seconds / 3600 * kWhPrice
+      })
     }
   }
 }

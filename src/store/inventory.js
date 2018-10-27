@@ -28,6 +28,8 @@ const inventory = {
   },
   getters: {
     inventory: (state) => state,
+    dailyExpenses: (state, getters) => getters.dailyRental + getters.dailyUtilityBill,
+    monthlyExpenses: (state, getters) => getters.monthlyRental + getters.monthlyUtilityBill,
     // Inventory power consumption
     watt: (state) => sumMarketFeature(state, 'watt'),
     // total gpu slots of deployed devices

@@ -61,10 +61,14 @@ const game = {
       const { frameDuration, speed } = state
       const elapsed = (millis / frameDuration) * speed // GT seconds
       const gameTime = state.time + elapsed
+      const { newMonth } = timeChanges(state.time, gameTime)
+      // if (newDay) this.dispatch('endOfDay')
+      if (newMonth) this.dispatch('endOfMonth')
       commit('updateGameTime', gameTime)
-      // console.log('[tick] game time', new Date(gameTime * 1000))
       this.dispatch('mine', elapsed)
-      this.dispatch('payRent', elapsed)
+      if (newMonth) this.dispatch('beginningOfMonth')
+      // if (newDay) this.dispatch('beginningOfDay')
+      // console.log('[tick] game time', new Date(gameTime * 1000))
     },
     work ({ commit, state }, task) {
       return new Promise((resolve) => {
@@ -78,6 +82,17 @@ const game = {
         })
       })
     }
+  }
+}
+
+function timeChanges (timeA, timeB) {
+  const dateA = new Date(timeA * 1000)
+  const dateB = new Date(timeB * 1000)
+  return {
+    newDay: dateA.getDay() !== dateB.getDay(),
+    newMonth: dateA.getMonth() !== dateB.getMonth(),
+    newYear: dateA.getYear() !== dateB.getYear(),
+    newHalfing: false // TODO: implement BTC halfing check
   }
 }
 

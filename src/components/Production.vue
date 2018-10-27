@@ -81,8 +81,7 @@ export default {
     ...mapState({
       usd: (state) => state.inventory.usd,
       btc: (state) => state.inventory.btc,
-      btcPrice: (state, getters) => getters.btcInUSD.toFixed(2),
-      dailyExpenses: (state, getters, rootState) => getters.dailyRental + getters.dailyUtilityBill
+      btcPrice: (state, getters) => getters.btcInUSD.toFixed(2)
     }),
     ...mapGetters([
       'isAvailable',
@@ -90,7 +89,9 @@ export default {
       'inventory',
       'deployments',
       'btcInUSD',
-      'btcInUsdDerivation'
+      'btcInUsdDerivation',
+      'dailyExpenses',
+      'monthlyExpenses'
     ]),
     btcSellDuration: () => market.btcSellDuration
   },

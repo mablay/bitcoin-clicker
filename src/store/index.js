@@ -5,6 +5,7 @@ import modal from './modal'
 import mining from './mining'
 import exchange from './exchange'
 import inventory from './inventory'
+import accounting from './accounting'
 import technology from './technology'
 import deployment from './deployment'
 import { achievements } from './achievements'
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     mining,
     exchange,
     inventory,
+    accounting,
     technology,
     deployment,
     achievements

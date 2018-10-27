@@ -16,12 +16,12 @@
 
     <div class="row">
       <div class="col-6">
-        <h4>Daily Rent</h4>
-        <div class="stats danger">${{ dailyRental.toFixed(2) }}</div>
+        <h4>Monthly Rent</h4>
+        <div class="stats danger">${{ monthlyRental.toFixed(2) }}</div>
       </div>
       <div class="col-6">
-        <h4>Daily Utility Bill</h4>
-        <div class="stats danger">${{ dailyUtilityBill.toFixed(2) }} USD</div>
+        <h4>Current Utility Bill</h4>
+        <div class="stats danger">${{ utilityBill.toFixed(2) }} USD</div>
       </div>
     </div>
 
@@ -84,15 +84,16 @@ export default {
           hashrate: hpsPrefix(getters.deviceTypeHashrate[miner]),
           duration: market[miner].deployDuration || 1 * DAY
         }))
-      }
+      },
+      utilityBill: (state) => state.accounting.utility
     }),
     ...mapGetters([
       'totalSpace',
       'usedSpace',
       'gpuSlots',
       'gpusDeployed',
-      'dailyRental',
-      'dailyUtilityBill',
+      'monthlyRental',
+      'monthlyUtilityBill',
       'deployments',
       'inventory',
       'deviceTypeHashrate'
