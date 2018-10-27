@@ -58,7 +58,7 @@ const deployment = {
       })
     },
     beginningOfMonth: ({ getters, commit }) => {
-      console.log('[deployment] beginningOfMonth')
+      // console.log('[deployment] beginningOfMonth')
       commit('chargeCosts', { position: 'rent', amount: getters.monthlyRental })
     }
     // payRent ({ commit, state, getters }) {

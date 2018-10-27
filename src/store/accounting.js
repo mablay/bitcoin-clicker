@@ -10,7 +10,7 @@ const accounting = {
         .keys(state)
         .reduce((acc, position) => acc + state[position], 0)
 
-      console.log('[accounting] endOfMonth settleCharges', sum)
+      // console.log('[accounting] endOfMonth settleCharges', sum)
 
       commit('addToInventory', {
         item: 'usd',
@@ -19,7 +19,7 @@ const accounting = {
       commit('clearCharges')
     },
     beginningOfMonth: ({ state, commit }) => {
-      console.log('[accounting] beginningOfMonth')
+      // console.log('[accounting] beginningOfMonth')
     }
     // payMonthlyBills ({ commit, state, getters }) {
     //   console.log('[payMonthlyBills]', getters.monthlyExpenses)
