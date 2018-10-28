@@ -23,7 +23,7 @@ export default {
     history: state => state.game.history,
     foreground: state => state.game.theme === 'light' ? 0 : 100,
     background: state => {
-      console.log('background', state.game.theme)
+      // console.log('background', state.game.theme)
       return state.game.theme === 'light' ? 100 : 0
     }
   })

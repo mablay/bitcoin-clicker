@@ -8,14 +8,14 @@ class LinearClock {
 
   start () {
     if (this.handler) return this
-    console.log(`[lclock] START ${this.name} (${this._interval}ms)`)
+    // console.log(`[lclock] START ${this.name} (${this._interval}ms)`)
     this.handler = setInterval(() => this.cb(this._interval), this._interval)
     return this
   }
 
   stop () {
     if (this.handler) {
-      console.log(`[lclock] STOP ${this.name} (${this._interval}ms)`)
+      // console.log(`[lclock] STOP ${this.name} (${this._interval}ms)`)
       clearInterval(this.handler)
       this.handler = null
     }
