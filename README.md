@@ -1,6 +1,6 @@
 # Bitcoin Clicker
 
-![version](https://img.shields.io/badge/version-v0.3.9-blue.svg)
+![version](https://img.shields.io/badge/version-v0.4.1-blue.svg)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 ![status:development](https://img.shields.io/badge/status-development-red.svg "In development")
 
