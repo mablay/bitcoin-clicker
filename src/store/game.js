@@ -35,6 +35,7 @@ const game = {
         Does not affect speed! */
     frameDuration: 1000,
     history: [],
+    sound: false,
     theme: 'dark'
   },
   mutations: {
@@ -49,6 +50,11 @@ const game = {
     },
     updateGameTime (state, gameTime) {
       state.time = gameTime
+    },
+    setSound (state, sound) {
+      // sound = true: turn on game sounds
+      // sound = false: turn off game sounds
+      state.sound = sound
     }
   },
   getters: {
