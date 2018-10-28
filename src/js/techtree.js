@@ -50,7 +50,7 @@ const techtree = {
     { title: 'Increase USB miner hashrate', duration: 20 * DAY, effect: { usbMiner: { hps: 2 } } }
   ],
   asic: [
-    { title: 'Develop Bitcoin ASIC', duration: 300 * DAY, require: { usbAsic: 1 } },
+    { title: 'Develop Bitcoin ASIC', duration: 300 * DAY, require: { usbMiner: 1 } },
     { title: 'Improve Bitcoin ASIC', duration: 100 * DAY },
     { title: 'Implement ASIC Boost', duration: 100 * DAY }
   ]

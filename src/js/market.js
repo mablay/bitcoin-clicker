@@ -46,7 +46,7 @@ const market = {
     watt: 800,
     hps: 100e6 // 100 MHps - 200 MHps @15W
   },
-  usbAsic: {
+  usbMiner: {
     title: 'USB Miner',
     tech: { usbMiner: 1 },
     buyPrice: 35,
